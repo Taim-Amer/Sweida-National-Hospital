@@ -40,8 +40,8 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [defaultColor, secondColor, color3]),
-        color: defaultColor.withOpacity(.30),
+        gradient: LinearGradient(colors: [defaultLightColor, secondDarkColor, color3]),
+        color: defaultLightColor.withOpacity(.30),
         borderRadius: BorderRadius.circular(50),
       ),
       child: TextFormField(
@@ -53,7 +53,7 @@ class CustomTextField extends StatelessWidget {
         validator: validator,
         keyboardType: type,
         obscureText: isPassword,
-        cursorColor: defaultColor,
+        cursorColor: defaultLightColor,
         style: const TextStyle(color: titleColor, fontStyle: FontStyle.normal),
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(14.0),
@@ -66,13 +66,13 @@ class CustomTextField extends StatelessWidget {
           ),
           hintText: label,
           focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: defaultColor, style: BorderStyle.none)),
+              borderSide: BorderSide(color: defaultLightColor, style: BorderStyle.none)),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(50),
           ),
           prefixIcon: Icon(
             prefix,
-            color: defaultColor,
+            color: defaultLightColor,
           ),
           suffixIcon: suffix != null
               ? IconButton(

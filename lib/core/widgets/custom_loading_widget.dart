@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names, use_key_in_widget_constructors, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:hospital_management_system/core/styles/colors.dart';
 import 'package:hospital_management_system/core/styles/themes.dart';
 
 class CustomLoadingWidget extends StatefulWidget {
@@ -76,9 +77,9 @@ class MyPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    Paint Circle_1 = Paint()..color = defaultColor;
+    Paint Circle_1 = Paint()..color = defaultLightColor;
 
-    Paint Circle_2 = Paint()..color = secondColor;
+    Paint Circle_2 = Paint()..color = defaultDarkColor;
 
     canvas.drawCircle(Offset(size.width * .5, size.height * .5),
         size.width * Radius_1, Circle_1);

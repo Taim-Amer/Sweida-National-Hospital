@@ -37,7 +37,7 @@ class CustomDatePicker extends StatelessWidget {
         style: TextStyle(
           color: textColor,
         ),
-        cursorColor: secondColor,
+        cursorColor: secondLightColor,
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           hintText: hint,
@@ -53,13 +53,13 @@ class CustomDatePicker extends StatelessWidget {
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: secondColor,
+              color: secondLightColor,
               width: outlineWidth,
             ),
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: defaultColor.withOpacity(.5),
+              color: defaultLightColor.withOpacity(.5),
               width: outlineWidth,
             ),
           ),

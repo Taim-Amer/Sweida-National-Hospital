@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hospital_management_system/core/cubit/radio_cubit/radio_cubit.dart';
+import 'package:hospital_management_system/core/styles/colors.dart';
 import 'package:hospital_management_system/core/styles/themes.dart';
 
 class CustomRadioList extends StatelessWidget {
@@ -24,7 +25,7 @@ class CustomRadioList extends StatelessWidget {
               return RadioListTile(
                 title: Text(options[index]),
                 value: index,
-                activeColor: defaultColor,
+                activeColor: secondDarkColor,
                 groupValue: RadioCubit.get(context).currentIndex,
                 onChanged: (value) {
                   RadioCubit.get(context).changeRadioIndex(value ?? 0);

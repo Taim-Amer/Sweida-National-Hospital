@@ -30,7 +30,7 @@ class CustomOutlinedTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Theme(
       data: Theme.of(context).copyWith(
-        splashColor: defaultColor
+        splashColor: defaultLightColor
       ),
       child: Material(
         color: Colors.transparent,
@@ -45,7 +45,7 @@ class CustomOutlinedTextField extends StatelessWidget {
             style: TextStyle(
                 color: textColor
             ),
-            cursorColor: secondColor,
+            cursorColor: secondDarkColor,
             textAlign: TextAlign.center,
             decoration: InputDecoration(
               hintText: hintText,
@@ -61,13 +61,13 @@ class CustomOutlinedTextField extends StatelessWidget {
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: secondColor,
+                  color: secondLightColor,
                   width: outlineWidth,
                 ),
               ),
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: defaultColor.withOpacity(.5),
+                  color: defaultLightColor.withOpacity(.5),
                   width: outlineWidth,
                 ),
               ),

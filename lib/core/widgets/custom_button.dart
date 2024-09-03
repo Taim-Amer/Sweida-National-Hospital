@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:hospital_management_system/core/styles/colors.dart';
-import 'package:hospital_management_system/core/styles/themes.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton(
@@ -37,10 +36,10 @@ class CustomButton extends StatelessWidget {
         ),
       ),
       decoration: BoxDecoration(
-        color: defaultColor,
+        color: defaultLightColor,
         boxShadow: [
           BoxShadow(
-            color: defaultColor!.withOpacity(0.1),
+            color: defaultLightColor!.withOpacity(0.1),
             spreadRadius: 2,
             blurRadius: 4,
             offset: const Offset(0, 3),
@@ -50,8 +49,8 @@ class CustomButton extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            defaultColor.withOpacity(.8),
-            secondColor,
+            defaultLightColor.withOpacity(.8),
+            secondLightColor,
             // wightGreyColor
           ],
         ),

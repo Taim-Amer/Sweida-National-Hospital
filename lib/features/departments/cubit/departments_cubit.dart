@@ -18,7 +18,6 @@ class DepartmentsCubit extends Cubit<DepartmentsState> {
   String token = CacheHelper.getData(key: "token");
 
   AllDepartmentModel? allDepartmentModel;
-
   void getAllDepartments() {
     emit(AllDepartmentsLoadingState());
     DioHelper.getData(
