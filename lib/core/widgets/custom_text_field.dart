@@ -40,9 +40,8 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [defaultLightColor, secondDarkColor, color3]),
-        color: defaultLightColor.withOpacity(.30),
-        borderRadius: BorderRadius.circular(50),
+        color: secondDarkColor.withOpacity(.4),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: TextFormField(
         enableInteractiveSelection: false,

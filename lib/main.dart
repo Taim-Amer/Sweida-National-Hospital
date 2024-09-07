@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hospital_management_system/core/bloc_observer.dart';
 import 'package:hospital_management_system/core/network/local/cache_helper.dart';
 import 'package:hospital_management_system/core/network/remote/dio_helper.dart';
-import 'package:hospital_management_system/features/login/view/login_screen.dart';
+import 'package:hospital_management_system/features/login/views/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

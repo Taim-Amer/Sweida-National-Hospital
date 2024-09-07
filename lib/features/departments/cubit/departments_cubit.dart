@@ -4,6 +4,7 @@ import 'package:hospital_management_system/core/network/local/cache_helper.dart'
 import 'package:hospital_management_system/core/network/remote/dio_helper.dart';
 import 'package:hospital_management_system/features/departments/models/accept_resident_model.dart';
 import 'package:hospital_management_system/features/departments/models/all_department_model.dart';
+import 'package:hospital_management_system/features/departments/models/all_emergency_patient_model.dart';
 import 'package:hospital_management_system/features/departments/models/all_patient_in_department_model.dart';
 import 'package:hospital_management_system/features/departments/models/emergency_transferring_model.dart';
 import 'package:hospital_management_system/features/departments/models/get_resident_model.dart';
@@ -153,5 +154,23 @@ class DepartmentsCubit extends Cubit<DepartmentsState> {
     });
   }
 
+  AllEmergencyPatientModel? allEmergencyPatientModel;
+  void getAllEmergencyPatient(){
+    emit(AllEmergencyPatientLoadingState());
+    DioHelper.getData(
+      endpoint: ALL_EMERGENCY_PATIENT,
+      bearerToken: token
+    ).then((value){
+      allEmergencyPatientModel = AllEmergencyPatientModel.fromJson(value);
+      print(allEmergencyPatientModel!.allEmergencyPatient!.first.fullName);
+      print(allEmergencyPatientModel!.allEmergencyPatient!.first.fullName);
+      print(allEmergencyPatientModel!.allEmergencyPatient!.first.fullName);
+      print(allEmergencyPatientModel!.allEmergencyPatient!.first.fullName);
+
+      emit(AllEmergencyPatientSuccessState(allEmergencyPatientModel!));
+    }).catchError((onError){
+      emit(AllEmergencyPatientFailureState(onError.toString()));
+    });
+  }
 
 }

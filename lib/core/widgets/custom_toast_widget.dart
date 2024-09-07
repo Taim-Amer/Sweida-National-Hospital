@@ -19,13 +19,13 @@ Color chooseToastColor(ToastState state) {
   switch(state)
   {
     case ToastState.SUCCESS:
-      color = Colors.green.withOpacity(.8);
+      color = Colors.green;
       break;
     case ToastState.ERROR:
-      color = Colors.redAccent.withOpacity(.8);
+      color = Colors.redAccent;
       break;
     case ToastState.WARNING:
-      color = Colors.orange.withOpacity(.8);
+      color = Colors.orange;
       break;
   }
   return color;

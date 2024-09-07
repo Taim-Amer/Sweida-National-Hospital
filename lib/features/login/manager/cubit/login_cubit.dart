@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hospital_management_system/core/end_points.dart';
 import 'package:hospital_management_system/core/network/remote/dio_helper.dart';
-import 'package:hospital_management_system/features/login/model/login_model.dart';
+import 'package:hospital_management_system/features/login/models/login_model.dart';
 
 part 'login_state.dart';
 

@@ -1,5 +1,3 @@
-// ignore_for_file: sort_child_properties_last
-
 import 'package:flutter/material.dart';
 import 'package:hospital_management_system/core/styles/colors.dart';
 
@@ -12,6 +10,7 @@ class CustomButton extends StatelessWidget {
       this.isUpperCase = true,
       this.radius = 10,
       });
+
   final Function function;
   final String text;
   final double width;
@@ -23,6 +22,18 @@ class CustomButton extends StatelessWidget {
     return Container(
       height: 45.0,
       width: width,
+      decoration: BoxDecoration(
+        color: defaultLightColor,
+        boxShadow: [
+          BoxShadow(
+            color: defaultLightColor.withOpacity(0.1),
+            spreadRadius: 2,
+            blurRadius: 4,
+            offset: const Offset(0, 3),
+          ),
+        ],
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: MaterialButton(
         onPressed: () {
           function();
@@ -34,27 +45,6 @@ class CustomButton extends StatelessWidget {
             color: wightColor,
           ),
         ),
-      ),
-      decoration: BoxDecoration(
-        color: defaultLightColor,
-        boxShadow: [
-          BoxShadow(
-            color: defaultLightColor!.withOpacity(0.1),
-            spreadRadius: 2,
-            blurRadius: 4,
-            offset: const Offset(0, 3),
-          ),
-        ],
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            defaultLightColor.withOpacity(.8),
-            secondLightColor,
-            // wightGreyColor
-          ],
-        ),
-        borderRadius: BorderRadius.circular(20),
       ),
     );
   }

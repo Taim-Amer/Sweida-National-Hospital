@@ -70,6 +70,17 @@ class EmergencyTransferringFailureState extends DepartmentsState {
   EmergencyTransferringFailureState(this.error);
 }
 
+//All Emergency Patient
+class AllEmergencyPatientLoadingState extends DepartmentsState {}
+class AllEmergencyPatientSuccessState extends DepartmentsState {
+  final AllEmergencyPatientModel allEmergencyPatientModel;
+  AllEmergencyPatientSuccessState(this.allEmergencyPatientModel);
+}
+class AllEmergencyPatientFailureState extends DepartmentsState {
+  final String error;
+  AllEmergencyPatientFailureState(this.error);
+}
+
 
 
 

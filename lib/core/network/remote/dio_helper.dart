@@ -3,7 +3,7 @@ import 'package:hospital_management_system/core/widgets/custom_toast_widget.dart
 
 class DioHelper {
   static Dio? dio;
-  static String baseUrl = "http://192.168.2.1:8000/api/";
+  static String baseUrl = "http://127.0.0.1:8000/api/";
 
   static init(){
     dio = Dio(
