@@ -15,4 +15,27 @@ class AddPatientFailureState extends PatientsState{
   AddPatientFailureState(this.error);
 }
 
+// Patient File
+class PatientFileLoadingState extends PatientsState{}
+class PatientFileSuccessState extends PatientsState{
+  final PatientFileModel patientFileModel;
+  PatientFileSuccessState(this.patientFileModel);
+}
+class PatientFileFailureState extends PatientsState{
+  final String error;
+  PatientFileFailureState(this.error);
+}
+
+// Em Transfer
+class EmergencyTransferLoadingState extends PatientsState{}
+class EmergencyTransferSuccessState extends PatientsState{
+  final EmergencyTransferModel emergencyTransferModel;
+  EmergencyTransferSuccessState(this.emergencyTransferModel);
+}
+class EmergencyTransferFailureState extends PatientsState{
+  final String error;
+  EmergencyTransferFailureState(this.error);
+}
+
+
 

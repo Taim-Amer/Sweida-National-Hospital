@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hospital_management_system/core/bloc_observer.dart';
 import 'package:hospital_management_system/core/network/local/cache_helper.dart';
 import 'package:hospital_management_system/core/network/remote/dio_helper.dart';
+import 'package:hospital_management_system/features/drawer/views/drawer_layout.dart';
 import 'package:hospital_management_system/features/login/views/login_screen.dart';
+import 'package:hospital_management_system/features/patients/cubit/patients_cubit.dart';
 
-void main() async {
+void main() async{
+
   WidgetsFlutterBinding.ensureInitialized();
-
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarIconBrightness: Brightness.dark,
-      statusBarColor: Colors.transparent,
-    ),
-  );
-
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   await CacheHelper.init();
@@ -33,25 +27,20 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // final int themeIndex ;
   // final Widget startWidget;
 
   @override
   Widget build(BuildContext context) {
-    // return MultiBlocProvider(
-    //     providers:
-    //     [
-    //       // BlocProvider(create: (context) => HomeCubit()),
-    //       // BlocProvider(create: (context) => AppCubit()..changeTheme(themeIndex)),
-    //       // BlocProvider(create: (context) => TourismCubit()),
-    //     ],
-        return MaterialApp(
-          theme: ThemeData(
-            fontFamily: 'Ubuntu',
+        return BlocProvider(
+          create: (context) => PatientsCubit(),
+          child: MaterialApp(
+            theme: ThemeData(
+              fontFamily: 'Ubuntu',
+            ),
+            debugShowCheckedModeBanner: false,
+            home: DrawerLayout(),
           ),
-          debugShowCheckedModeBanner: false,
-          home: LoginScreen(),
-    );
+        );
   }
 }
 

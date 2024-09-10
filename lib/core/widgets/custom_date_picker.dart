@@ -12,8 +12,8 @@ class CustomDatePicker extends StatelessWidget {
     this.hint = "Enter your birthdate",
     this.outlineColor = Colors.black,
     this.outlineWidth = 2.0,
-    this.textColor = wightColor,
-    this.hintColor = wightColor
+    this.textColor = whiteColor,
+    this.hintColor = whiteColor
   });
 
   final TextEditingController dateController;

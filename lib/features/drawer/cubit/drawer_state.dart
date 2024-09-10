@@ -1,5 +1,7 @@
-part of 'layout_cubit.dart';
+part of 'drawer_cubit.dart';
 
-abstract class LayoutState {}
+abstract class DrawerState {}
 
-class LayoutInitial extends LayoutState {}
+class DrawerInitial extends DrawerState {}
+
+class ChangeDrawerIndexState extends DrawerState {}

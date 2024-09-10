@@ -44,7 +44,7 @@ class DepartmentsCubit extends Cubit<DepartmentsState> {
 
   SpecificDepartmentModel? specificDepartmentModel;
 
-  void getSpecificDepartment({required int id}) {
+  Future<void> getSpecificDepartment({required int id})async{
     emit(SpecificDepartmentLoadingState());
     DioHelper.postData(
       endpoint: SPECIFIC_DEPARTMENT,
@@ -78,7 +78,7 @@ class DepartmentsCubit extends Cubit<DepartmentsState> {
     emit(AcceptResidentLoadingState());
     DioHelper.postData(
       endpoint: ACCEPT_RESIDENT,
-      bearerToken: token,
+      token: token,
       data: {
         "patient_id": patientId,
         "department_id": departmentId,
@@ -110,7 +110,7 @@ class DepartmentsCubit extends Cubit<DepartmentsState> {
     emit(AllPatientInDepartmentLoadingState());
     DioHelper.postData(
       endpoint: ALL_PATIENT_IN_DEPARTMENT,
-      bearerToken: token,
+      token: token,
       data: {
         "department_id": departmentId
       },
@@ -130,7 +130,7 @@ class DepartmentsCubit extends Cubit<DepartmentsState> {
     emit(GetResidentLoadingState());
     DioHelper.postData(
       endpoint: GET_RESIDENT,
-      bearerToken: token,
+      token: token,
       data: {
         "department_id": departmentId
       },
@@ -146,7 +146,7 @@ class DepartmentsCubit extends Cubit<DepartmentsState> {
     emit(EmergencyTransferringLoadingState());
     DioHelper.postData(
       endpoint: EMERGENCY_TRANSFERRING_PATIENT,
-      bearerToken: token,
+      token: token,
     ).then((value) {
       //============================================
     }).catchError((onError) {
@@ -155,18 +155,13 @@ class DepartmentsCubit extends Cubit<DepartmentsState> {
   }
 
   AllEmergencyPatientModel? allEmergencyPatientModel;
-  void getAllEmergencyPatient(){
+  Future<void> getAllEmergencyPatient()async{
     emit(AllEmergencyPatientLoadingState());
     DioHelper.getData(
       endpoint: ALL_EMERGENCY_PATIENT,
-      bearerToken: token
+      token: token
     ).then((value){
       allEmergencyPatientModel = AllEmergencyPatientModel.fromJson(value);
-      print(allEmergencyPatientModel!.allEmergencyPatient!.first.fullName);
-      print(allEmergencyPatientModel!.allEmergencyPatient!.first.fullName);
-      print(allEmergencyPatientModel!.allEmergencyPatient!.first.fullName);
-      print(allEmergencyPatientModel!.allEmergencyPatient!.first.fullName);
-
       emit(AllEmergencyPatientSuccessState(allEmergencyPatientModel!));
     }).catchError((onError){
       emit(AllEmergencyPatientFailureState(onError.toString()));

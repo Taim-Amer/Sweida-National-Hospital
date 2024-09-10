@@ -16,10 +16,10 @@ class DioHelper {
 
   static Future<dynamic> getData({
     required String endpoint,
-    String? bearerToken,
+    String? token,
     Map<String, dynamic>? queryParameters,
   }) async {
-    dio?.options.headers['Authorization'] = 'Bearer $bearerToken';
+    dio?.options.headers['token'] = '$token';
     var response = await dio!.get(
       '$baseUrl$endpoint',
       queryParameters: queryParameters,
@@ -30,11 +30,11 @@ class DioHelper {
   static Future<Map<String, dynamic>> postData({
     required String endpoint,
     Map<String, dynamic>? data,
-    String? bearerToken,
+    String? token,
   }) async {
     dio!.options.headers['Content-Type'] = 'application/json';
-    if (bearerToken != null) {
-      dio!.options.headers['Authorization'] = 'Bearer $bearerToken';
+    if (token != null) {
+      dio!.options.headers['token'] = token;
     }
 
     Response response = await dio!.post('$baseUrl$endpoint', data: data);
@@ -49,11 +49,11 @@ class DioHelper {
 
   static Future<Map<String, dynamic>> deleteData({
     required String endpoint,
-    String? bearerToken,
+    String? token,
     Map<String, dynamic>? queryParameters,
   }) async {
     dio!.options.headers['Content-Type'] = 'application/json';
-    dio!.options.headers['Authorization'] = 'Bearer $bearerToken';
+    dio!.options.headers['Authorization'] = '$token';
 
     var response = await dio!.delete(
       '$baseUrl$endpoint',

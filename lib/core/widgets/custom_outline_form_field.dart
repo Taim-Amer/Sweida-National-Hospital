@@ -22,8 +22,8 @@ class CustomOutlinedTextField extends StatelessWidget {
     required this.type,
     this.width = double.infinity,
     this.height = 70,
-    this.textColor = wightColor,
-    this.hintColor = wightColor
+    this.textColor = whiteColor,
+    this.hintColor = whiteColor
   });
 
   @override

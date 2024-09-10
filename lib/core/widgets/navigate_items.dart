@@ -46,7 +46,7 @@ void navigateWithFadeAndFinish(context, Widget widget, {Curve curve = Curves.eas
   Navigator.pushReplacement(
     context,
     PageRouteBuilder(
-      transitionDuration: const Duration(milliseconds: 500),
+      transitionDuration: const Duration(milliseconds: 300),
       pageBuilder: (context, animation, secondaryAnimation) => FadeTransition(
         opacity: Tween<double>(begin: 0.0, end: 1.0).animate(animation),
         child: widget,

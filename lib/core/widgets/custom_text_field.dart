@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hospital_management_system/core/styles/colors.dart';
-import 'package:hospital_management_system/core/styles/themes.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField(
@@ -16,10 +15,10 @@ class CustomTextField extends StatelessWidget {
       this.color1,
       this.color2,
       this.suffix,
-      this.suffixPressed,
+      this.prefixPressed,
       this.isPassword = false,
-      this.color3 =wightGreyColor,
-      });
+      this.color3 = whiteGreyColor,
+      this.suffixColor = defaultLightColor});
 
   final TextEditingController controller;
   final TextInputType type;
@@ -34,7 +33,8 @@ class CustomTextField extends StatelessWidget {
   final Color? color2;
   final Color color3;
   final IconData? suffix;
-  final Function? suffixPressed;
+  final Function? prefixPressed;
+  final Color suffixColor;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +47,7 @@ class CustomTextField extends StatelessWidget {
         enableInteractiveSelection: false,
         onTap: onTap,
         controller: controller,
+        textAlign: TextAlign.right,
         onFieldSubmitted: onSubmit != null ? (s) => onSubmit!() : null,
         onChanged: onChange,
         validator: validator,
@@ -64,23 +65,23 @@ class CustomTextField extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           hintText: label,
-          focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: defaultLightColor, style: BorderStyle.none)),
+          focusedBorder: const OutlineInputBorder(
+              borderSide: BorderSide(
+                  color: defaultLightColor, style: BorderStyle.none)),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(50),
           ),
-          prefixIcon: Icon(
-            prefix,
-            color: defaultLightColor,
-          ),
-          suffixIcon: suffix != null
+          prefixIcon: prefix != null
               ? IconButton(
-                  onPressed: () {
-                    suffixPressed!();
+                  icon: Icon(prefix),
+                  color: defaultLightColor,
+                  onPressed: (){
+                    prefixPressed!();
                   },
-                  icon: Icon(
-                    suffix,
-                  ))
+                )
+              : null,
+          suffixIcon: suffix != null
+              ? Icon(suffix, color: suffixColor)
               : null,
         ),
       ),

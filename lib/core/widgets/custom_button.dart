@@ -9,6 +9,8 @@ class CustomButton extends StatelessWidget {
       this.width = double.infinity,
       this.isUpperCase = true,
       this.radius = 10,
+      this.labelColor = whiteColor,
+      this.color = defaultLightColor
       });
 
   final Function function;
@@ -16,6 +18,8 @@ class CustomButton extends StatelessWidget {
   final double width;
   final bool isUpperCase;
   final double radius;
+  final Color labelColor;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +27,7 @@ class CustomButton extends StatelessWidget {
       height: 45.0,
       width: width,
       decoration: BoxDecoration(
-        color: defaultLightColor,
+        color: color,
         boxShadow: [
           BoxShadow(
             color: defaultLightColor.withOpacity(0.1),
@@ -41,8 +45,9 @@ class CustomButton extends StatelessWidget {
         splashColor: Colors.transparent,
         child: Text(
           isUpperCase ? text.toUpperCase() : text,
-          style: const TextStyle(
-            color: wightColor,
+          style: TextStyle(
+            color: labelColor,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),

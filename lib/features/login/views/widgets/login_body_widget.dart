@@ -6,7 +6,9 @@ import 'package:hospital_management_system/core/styles/sizes.dart';
 import 'package:hospital_management_system/core/widgets/custom_button.dart';
 import 'package:hospital_management_system/core/widgets/custom_text_field.dart';
 import 'package:hospital_management_system/core/widgets/custom_toast_widget.dart';
+import 'package:hospital_management_system/core/widgets/navigate_items.dart';
 import 'package:hospital_management_system/core/widgets/text_items.dart';
+import 'package:hospital_management_system/features/drawer/views/drawer_layout.dart';
 import 'package:hospital_management_system/features/login/manager/cubit/login_cubit.dart';
 import 'package:hospital_management_system/features/login/manager/password_visibility_cubit/password_visibility_cubit.dart';
 import 'package:iconsax/iconsax.dart';
@@ -14,23 +16,23 @@ import 'package:iconsax/iconsax.dart';
 class LoginBodyWidget extends StatelessWidget {
   LoginBodyWidget({super.key});
 
-  TextEditingController departmentController = TextEditingController();
+  static TextEditingController departmentController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        titleText("Hospital Management System"),
+        titleText("نظام ادارة مشفى"),
         const SizedBox(height: Sizes.spaceBtwSections),
         CustomTextField(
           controller: departmentController,
           type: TextInputType.number,
           validator: (value) {},
-          label: "Department ID",
-          prefix: Iconsax.code,
+          label: "رقم القسم",
+          suffix: Iconsax.code,
         ),
         const SizedBox(height: Sizes.spaceBtwSections),
         BlocBuilder<PasswordVisibilityCubit, PasswordVisibilityState>(
@@ -39,11 +41,11 @@ class LoginBodyWidget extends StatelessWidget {
               controller: passwordController,
               type: TextInputType.text,
               validator: (value){},
-              label: "Password",
-              prefix: Iconsax.lock,
+              label: "كلمة المرور",
+              prefix: PasswordVisibilityCubit.get(context).suffix,
               isPassword: PasswordVisibilityCubit.get(context).isPassword,
-              suffix: PasswordVisibilityCubit.get(context).suffix,
-              suffixPressed: (){PasswordVisibilityCubit.get(context).changePasswordVisibility();},
+              suffix: Iconsax.lock,
+              prefixPressed: (){PasswordVisibilityCubit.get(context).changePasswordVisibility();},
             );
           },
         ),
@@ -51,7 +53,12 @@ class LoginBodyWidget extends StatelessWidget {
         Center(
           child: MouseRegion(
             cursor: SystemMouseCursors.click,
-            child: BlocBuilder<LoginCubit, LoginState>(
+            child: BlocConsumer<LoginCubit, LoginState>(
+              listener: (context, state) {
+                if(state is LoginSuccessState){
+                  navigateWithFadeAndFinish(context, DrawerLayout());
+                }
+              },
               builder: (context, state){
                 return CustomButton(
                     function: (){
@@ -65,7 +72,7 @@ class LoginBodyWidget extends StatelessWidget {
                         showToast("Please check your input data", ToastState.WARNING);
                       }
                     },
-                    text: "LOGIN",
+                    text: "تسجيل الدخول",
                 );
               },
             ),

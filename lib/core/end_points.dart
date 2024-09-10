@@ -21,3 +21,7 @@ const String ALL_EMERGENCY_PATIENT = "patient/allempatient";
 const String ADD_PATIENT = "patient/add";
 
 const String TRANSFER_PATIENT = "patient/transfer";
+
+const String PATIENT_FILE = "patient/file";
+
+const String EM_TRANSFER = "patient/emtransfer";

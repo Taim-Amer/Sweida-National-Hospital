@@ -20,30 +20,33 @@ class CustomLogoutButton extends StatelessWidget {
         },
         builder: (context, state){
           var cubit = LogoutCubit.get(context);
-          return Container(
-            height: 50,
-            decoration: BoxDecoration(
-              color: defaultLightColor,
-              boxShadow: [
-                BoxShadow(
-                  color: defaultLightColor.withOpacity(0.1),
-                  spreadRadius: 2,
-                  blurRadius: 4,
-                  offset: const Offset(0, 3),
-                ),
-              ],
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: MaterialButton(
-              onPressed: () => cubit.logout(),
-              splashColor: Colors.transparent,
-              child: const ListTile(
-                leading: Icon(Icons.logout, color: thirdColor),
-                title: Text(
-                  "Logout",
-                  style: TextStyle(
-                    fontSize:  18,
-                    color: thirdColor,
+          return MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: Container(
+              height: 50,
+              decoration: BoxDecoration(
+                color: defaultLightColor,
+                boxShadow: [
+                  BoxShadow(
+                    color: defaultLightColor.withOpacity(0.1),
+                    spreadRadius: 2,
+                    blurRadius: 4,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: MaterialButton(
+                onPressed: () => cubit.logout(),
+                splashColor: Colors.transparent,
+                child: const ListTile(
+                  leading: Icon(Icons.logout, color: thirdColor),
+                  title: Text(
+                    "الخروج",
+                    style: TextStyle(
+                      fontSize:  18,
+                      color: thirdColor,
+                    ),
                   ),
                 ),
               ),

@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hospital_management_system/core/end_points.dart';
+import 'package:hospital_management_system/core/network/local/cache_helper.dart';
 import 'package:hospital_management_system/core/network/remote/dio_helper.dart';
 import 'package:hospital_management_system/features/login/models/login_model.dart';
 
@@ -24,19 +25,9 @@ class LoginCubit extends Cubit<LoginState> {
         },
     ).then((value){
       loginModel = LoginModel.fromJson(value);
-      print(loginModel!.message);
-      print(loginModel!.message);
-      print(loginModel!.message);
-      print(loginModel!.message);
-
+      CacheHelper.saveData(key: "token", value: loginModel!.token);
       emit(LoginSuccessState(loginModel!));
     }).catchError((onError){
-
-      print(onError.toString());
-      print(onError.toString());
-      print(onError.toString());
-      print(onError.toString());
-
       emit(LoginFailureState(onError.toString()));
     });
   }
