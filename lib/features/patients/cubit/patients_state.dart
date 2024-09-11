@@ -37,5 +37,16 @@ class EmergencyTransferFailureState extends PatientsState{
   EmergencyTransferFailureState(this.error);
 }
 
+// Regular Transfer
+class RegularTransferLoadingState extends PatientsState{}
+class RegularTransferSuccessState extends PatientsState{
+  final RegularTransferModel regularTransferModel;
+  RegularTransferSuccessState(this.regularTransferModel);
+}
+class RegularTransferFailureState extends PatientsState{
+  final String error;
+  RegularTransferFailureState(this.error);
+}
+
 
 

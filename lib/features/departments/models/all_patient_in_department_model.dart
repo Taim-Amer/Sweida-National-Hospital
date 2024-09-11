@@ -1,23 +1,26 @@
 class AllPatientInDepartmentModel {
-  List<Null>? allPatientThisDepartment;
+  List<AllPatientThisDepartment>? allPatientThisDepartment;
 
   AllPatientInDepartmentModel({this.allPatientThisDepartment});
 
-  // AllPatientInDepartmentModel.fromJson(Map<String, dynamic> json) {
-  //   if (json['All Patient this Department '] != null) {
-  //     allPatientThisDepartment = <Null>[];
-  //     json['All Patient this Department '].forEach((v) {
-  //       allPatientThisDepartment!.add(new Null.fromJson(v));
-  //     });
-  //   }
-  // }
-  //
-  // Map<String, dynamic> toJson() {
-  //   final Map<String, dynamic> data = new Map<String, dynamic>();
-  //   if (this.allPatientThisDepartment != null) {
-  //     data['All Patient this Department '] =
-  //         this.allPatientThisDepartment!.map((v) => v.toJson()).toList();
-  //   }
-  //   return data;
-  // }
+  AllPatientInDepartmentModel.fromJson(Map<String, dynamic> json) {
+    if (json['All Patient this Department '] != null) {
+      allPatientThisDepartment = <AllPatientThisDepartment>[];
+      json['All Patient this Department '].forEach((v) {
+        allPatientThisDepartment!.add(AllPatientThisDepartment.fromJson(v));
+      });
+    }
+  }
+}
+
+class AllPatientThisDepartment {
+  int? patientId;
+  String? patientName;
+
+  AllPatientThisDepartment({this.patientId, this.patientName});
+
+  AllPatientThisDepartment.fromJson(Map<String, dynamic> json) {
+    patientId = json['patient_id'];
+    patientName = json['patient_name'];
+  }
 }

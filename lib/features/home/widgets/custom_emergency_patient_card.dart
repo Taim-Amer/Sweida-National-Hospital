@@ -4,7 +4,9 @@ import 'package:hospital_management_system/core/styles/colors.dart';
 import 'package:hospital_management_system/core/styles/sizes.dart';
 import 'package:hospital_management_system/core/widgets/custom_button.dart';
 import 'package:hospital_management_system/core/widgets/custom_toast_widget.dart';
+import 'package:hospital_management_system/core/widgets/navigate_items.dart';
 import 'package:hospital_management_system/core/widgets/text_items.dart';
+import 'package:hospital_management_system/features/drawer/views/drawer_layout.dart';
 import 'package:hospital_management_system/features/home/widgets/custom_emergency_patient_file_dialog.dart';
 import 'package:hospital_management_system/features/home/widgets/custom_emergency_transfer_dialog.dart';
 import 'package:hospital_management_system/features/patients/cubit/patients_cubit.dart';
@@ -52,7 +54,10 @@ class CustomEmergencyPatientCard extends StatelessWidget {
             BlocConsumer<PatientsCubit, PatientsState>(
               listener: (context, state){
                 if(state is EmergencyTransferSuccessState){
-                  showToast(state.emergencyTransferModel.message ?? "", ToastState.SUCCESS);
+                  showToast("تم تحويل المريض الى القسم المطلوب كمريض اسعافي" ?? "", ToastState.SUCCESS);
+                  navigateAndFinish(context, const DrawerLayout());
+                }else if (state is EmergencyTransferFailureState){
+                  showToast("حدث خطأ ما", ToastState.ERROR);
                 }
               },
               builder: (context, state){

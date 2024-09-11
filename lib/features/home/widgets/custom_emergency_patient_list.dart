@@ -9,25 +9,22 @@ class CustomEmergencyPatientList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      // height: 500,
-      child: ListView.builder(
-        itemCount: allEmergencyPatientModel.allEmergencyPatient!.length,
-        itemBuilder: (context, index) {
-          var model = allEmergencyPatientModel.allEmergencyPatient![index];
-          return CustomEmergencyPatientCard(
-            id: model.id ?? 0,
-            fullName: model.fullName ?? "",
-            address: model.address ?? "",
-            birthDate: model.dateOfBirth ?? "",
-            motherName: model.momName ?? "",
-            chain: model.chain ?? 0,
-            gender: model.gender ?? "",
-            caseDescription: model.caseDescription ?? "",
-            treatmentRequired: model.treatmentRequired ?? "",
-          );
-        },
-      ),
+    return ListView.builder(
+      itemCount: allEmergencyPatientModel.allEmergencyPatient!.length,
+      itemBuilder: (context, index) {
+        var model = allEmergencyPatientModel.allEmergencyPatient![index];
+        return CustomEmergencyPatientCard(
+          id: model.id ?? 0,
+          fullName: model.fullName ?? "",
+          address: model.address ?? "",
+          birthDate: model.dateOfBirth ?? "",
+          motherName: model.momName ?? "",
+          chain: model.chain ?? 0,
+          gender: model.gender ?? "",
+          caseDescription: model.caseDescription ?? "",
+          treatmentRequired: model.treatmentRequired ?? "",
+        );
+      },
     );
   }
 }

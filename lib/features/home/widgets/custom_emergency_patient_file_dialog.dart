@@ -17,7 +17,7 @@ Future<dynamic> showEmergencyPatientFileDialog(BuildContext context, String full
               const SizedBox(
                   height: 300,
                   width: 400,
-                  child: Image(image: AssetImage("assets/images/MoH_Logo-removebg-preview.png"))),
+                  child: Image(image: NetworkImage("assets/logos/Screenshot_20240911-175004_Chrome-removebg-preview.png"))),
               const SizedBox(height: Sizes.spaceBtwSections,),
               titleText("الاسم الكامل: $fullName" , size: 18),
               const SizedBox(height: Sizes.spaceBtwItems),

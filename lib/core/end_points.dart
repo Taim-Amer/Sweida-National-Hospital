@@ -25,3 +25,5 @@ const String TRANSFER_PATIENT = "patient/transfer";
 const String PATIENT_FILE = "patient/file";
 
 const String EM_TRANSFER = "patient/emtransfer";
+
+const String TRANSFER = "patient/transfer";

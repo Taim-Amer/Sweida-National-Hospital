@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hospital_management_system/core/styles/colors.dart';
 import 'package:hospital_management_system/core/styles/sizes.dart';
 import 'package:hospital_management_system/core/widgets/custom_divider.dart';
 import 'package:hospital_management_system/features/drawer/cubit/drawer_cubit.dart';
 import 'package:hospital_management_system/features/drawer/views/widgets/custom_drawer_menu_item.dart';
+import 'package:hospital_management_system/features/login/views/widgets/login_body_widget.dart';
 import 'package:hospital_management_system/features/logout/views/custom_logout_button.dart';
 import 'package:iconsax/iconsax.dart';
+
+import 'widgets/custom_add_patient_button.dart';
 
 class DrawerLayout extends StatelessWidget {
   const DrawerLayout({super.key});
@@ -17,7 +19,9 @@ class DrawerLayout extends StatelessWidget {
       create: (context) => DrawerCubit(),
       child: BlocBuilder<DrawerCubit, DrawerState>(
         builder: (context, state){
+          int? departmentID = int.tryParse(LoginBodyWidget.departmentController.text);
           var cubit = DrawerCubit.get(context);
+
           return Scaffold(
             backgroundColor: Colors.transparent,
             body: Row(
@@ -31,24 +35,25 @@ class DrawerLayout extends StatelessWidget {
                 Expanded(
                   flex: 1,
                   child: Container(
-                    color: defaultLightColor.withOpacity(.4),
-                    // color: secondDarkColor.withOpacity(0.3),
+                    color: Colors.transparent,
                     child: Padding(
                       padding: const EdgeInsets.all(Sizes.defaultSpace),
                       child: ListView(
                         children:[
-                          Container(
+                          const SizedBox(
                               height: 200,
                               child: Image(image: AssetImage("assets/images/MoH_Logo-removebg-preview.png"))),
-                          SizedBox(height: Sizes.spaceBtwSections,),
-                          CustomDrawerMenuItem(index: 0, icon: Iconsax.home, title: "الرئيسية"),
-                          CustomDrawerMenuItem(index: 1, icon: Iconsax.activity, title: "القسم"),
-                          CustomDrawerMenuItem(index: 2, icon: Icons.home, title: "Home"),
-                          CustomDrawerMenuItem(index: 3, icon: Icons.home, title: "Home"),
-                          CustomDrawerMenuItem(index: 4, icon: Icons.home, title: "Home"),
-                          CustomDrawerMenuItem(index: 5, icon: Icons.home, title: "Home"),
-                          CustomDividerItem(),
-                          CustomLogoutButton()
+                          const SizedBox(height: Sizes.spaceBtwSections,),
+                          departmentID == 2 ? CustomAddPatientButton() : const SizedBox(),
+                          const CustomDividerItem(),
+                          const CustomDrawerMenuItem(index: 0, icon: Icons.person_outline, title: "المرضى"),
+                          const CustomDrawerMenuItem(index: 1, icon: Icons.vaccines_outlined, title: "التحاليل"),
+                          const CustomDrawerMenuItem(index: 2, icon: Icons.home, title: "Home"),
+                          const CustomDrawerMenuItem(index: 3, icon: Icons.home, title: "Home"),
+                          const CustomDrawerMenuItem(index: 4, icon: Icons.home, title: "Home"),
+                          const CustomDrawerMenuItem(index: 5, icon: Icons.home, title: "Home"),
+                          const CustomDividerItem(),
+                          const CustomLogoutButton()
                         ],
                       ),
                     ),

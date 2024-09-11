@@ -56,7 +56,7 @@ class LoginBodyWidget extends StatelessWidget {
             child: BlocConsumer<LoginCubit, LoginState>(
               listener: (context, state) {
                 if(state is LoginSuccessState){
-                  navigateWithFadeAndFinish(context, DrawerLayout());
+                  navigateWithFadeAndFinish(context, const DrawerLayout());
                 }
               },
               builder: (context, state){

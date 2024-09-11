@@ -3,12 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hospital_management_system/core/bloc_observer.dart';
 import 'package:hospital_management_system/core/network/local/cache_helper.dart';
 import 'package:hospital_management_system/core/network/remote/dio_helper.dart';
+import 'package:hospital_management_system/features/departments/cubit/departments_cubit.dart';
+import 'package:hospital_management_system/features/departments/views/department_screen.dart';
 import 'package:hospital_management_system/features/drawer/views/drawer_layout.dart';
 import 'package:hospital_management_system/features/login/views/login_screen.dart';
+import 'package:hospital_management_system/features/login/views/widgets/login_body_widget.dart';
 import 'package:hospital_management_system/features/patients/cubit/patients_cubit.dart';
 
-void main() async{
-
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
@@ -16,31 +18,32 @@ void main() async{
 
   String? token = CacheHelper.getData(key: "token");
   print(token);
-  Widget? widget;
 
-  runApp(MyApp(
-    // themeIndex: theme ?? 0,
-    // startWidget : LoginPage()
-  ));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // final Widget startWidget;
-
   @override
   Widget build(BuildContext context) {
-        return BlocProvider(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
           create: (context) => PatientsCubit(),
-          child: MaterialApp(
-            theme: ThemeData(
-              fontFamily: 'Ubuntu',
-            ),
-            debugShowCheckedModeBanner: false,
-            home: DrawerLayout(),
-          ),
-        );
+        ),
+        BlocProvider(
+          create: (context) => DepartmentsCubit(),
+        ),
+      ],
+      child: MaterialApp(
+        theme: ThemeData(
+          fontFamily: 'Ubuntu',
+        ),
+        debugShowCheckedModeBanner: false,
+        home: LoginScreen(),
+      ),
+    );
   }
 }
 

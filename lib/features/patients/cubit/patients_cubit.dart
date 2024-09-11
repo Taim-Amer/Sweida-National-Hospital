@@ -5,6 +5,7 @@ import 'package:hospital_management_system/core/network/remote/dio_helper.dart';
 import 'package:hospital_management_system/features/patients/models/add_patient_model.dart';
 import 'package:hospital_management_system/features/patients/models/emergency_transfer_model.dart';
 import 'package:hospital_management_system/features/patients/models/patient_file_model.dart';
+import 'package:hospital_management_system/features/patients/models/regular_transfer_model.dart';
 
 part 'patients_state.dart';
 
@@ -101,6 +102,31 @@ class PatientsCubit extends Cubit<PatientsState> {
       emit(EmergencyTransferSuccessState(emergencyTransferModel!));
     }).catchError((onError){
       emit(EmergencyTransferFailureState(onError.toString()));
+    });
+  }
+
+  RegularTransferModel? regularTransferModel;
+  void regularTransfer({required int patientID, required int departmentID}){
+    emit(RegularTransferLoadingState());
+    DioHelper.postData(
+      endpoint: TRANSFER,
+      data: {
+        "patient_id" : patientID,
+        "tr_department" : departmentID
+      }
+    ).then((value){
+      regularTransferModel = RegularTransferModel.fromJson(value);
+      print(regularTransferModel!.message);
+      print(regularTransferModel!.message);
+      print(regularTransferModel!.message);
+
+      emit(RegularTransferSuccessState(regularTransferModel!));
+    }).catchError((onError){
+      emit(RegularTransferFailureState(onError.toString()));
+
+      print(onError.toString());
+      print(onError.toString());
+      print(onError.toString());
     });
   }
 }

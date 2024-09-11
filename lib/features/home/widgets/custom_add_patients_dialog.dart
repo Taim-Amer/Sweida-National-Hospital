@@ -91,14 +91,7 @@ Future<dynamic> showPatientAddDialog(BuildContext context, TextEditingController
           ),
         ),
         actions: [
-          BlocConsumer<PatientsCubit, PatientsState>(
-            listener: (context, state){
-              if(state is AddPatientSuccessState){
-                showToast(state.addPatientModel.message ?? "", ToastState.SUCCESS);
-              }else if(state is AddPatientFailureState){
-                showToast("الرجاء التأكد من المعلومات المدخلة", ToastState.ERROR);
-              }
-            },
+          BlocBuilder<PatientsCubit, PatientsState>(
             builder: (context, state){
               return CustomButton(
                 function: (){

@@ -1,6 +1,36 @@
 part of 'departments_cubit.dart';
 
-abstract class DepartmentsState {}
+class DepartmentsState {
+  final AllPatientInDepartmentModel? allPatientInDepartmentModel;
+  final AllEmergencyPatientModel? allEmergencyPatientModel;
+  final bool isLoadingEmergencyPatient;
+  final bool isLoadingDepartmentPatient;
+  final String? error;
+
+  DepartmentsState({
+    this.allPatientInDepartmentModel,
+    this.allEmergencyPatientModel,
+    this.isLoadingEmergencyPatient = false,
+    this.isLoadingDepartmentPatient = false,
+    this.error,
+  });
+
+  DepartmentsState copyWith({
+    AllPatientInDepartmentModel? allPatientInDepartmentModel,
+    AllEmergencyPatientModel? allEmergencyPatientModel,
+    bool? isLoadingEmergencyPatient,
+    bool? isLoadingDepartmentPatient,
+    String? error,
+  }) {
+    return DepartmentsState(
+      allPatientInDepartmentModel: allPatientInDepartmentModel ?? this.allPatientInDepartmentModel,
+      allEmergencyPatientModel: allEmergencyPatientModel ?? this.allEmergencyPatientModel,
+      isLoadingEmergencyPatient: isLoadingEmergencyPatient ?? this.isLoadingEmergencyPatient,
+      isLoadingDepartmentPatient: isLoadingDepartmentPatient ?? this.isLoadingDepartmentPatient,
+      error: error ?? this.error,
+    );
+  }
+}
 
 class DepartmentsInitial extends DepartmentsState {}
 
@@ -26,16 +56,16 @@ class SpecificDepartmentFailureState extends DepartmentsState {
   SpecificDepartmentFailureState(this.error);
 }
 
-//All patients in specific department
-class AllPatientInDepartmentLoadingState extends DepartmentsState {}
-class AllPatientInDepartmentSuccessState extends DepartmentsState {
-  final AllPatientInDepartmentModel allPatientInDepartmentModel;
-  AllPatientInDepartmentSuccessState(this.allPatientInDepartmentModel);
-}
-class AllPatientInDepartmentFailureState extends DepartmentsState {
-  final String error;
-  AllPatientInDepartmentFailureState(this.error);
-}
+// //All patients in specific department
+// class AllPatientInDepartmentLoadingState extends DepartmentsState {}
+// class AllPatientInDepartmentSuccessState extends DepartmentsState {
+//   final AllPatientInDepartmentModel allPatientInDepartmentModel;
+//   AllPatientInDepartmentSuccessState(this.allPatientInDepartmentModel);
+// }
+// class AllPatientInDepartmentFailureState extends DepartmentsState {
+//   final String error;
+//   AllPatientInDepartmentFailureState(this.error);
+// }
 
 //Accept Resident
 class AcceptResidentLoadingState extends DepartmentsState {}
@@ -70,16 +100,16 @@ class EmergencyTransferringFailureState extends DepartmentsState {
   EmergencyTransferringFailureState(this.error);
 }
 
-//All Emergency Patient
-class AllEmergencyPatientLoadingState extends DepartmentsState {}
-class AllEmergencyPatientSuccessState extends DepartmentsState {
-  final AllEmergencyPatientModel allEmergencyPatientModel;
-  AllEmergencyPatientSuccessState(this.allEmergencyPatientModel);
-}
-class AllEmergencyPatientFailureState extends DepartmentsState {
-  final String error;
-  AllEmergencyPatientFailureState(this.error);
-}
+// //All Emergency Patient
+// class AllEmergencyPatientLoadingState extends DepartmentsState {}
+// class AllEmergencyPatientSuccessState extends DepartmentsState {
+//   final AllEmergencyPatientModel allEmergencyPatientModel;
+//   AllEmergencyPatientSuccessState(this.allEmergencyPatientModel);
+// }
+// class AllEmergencyPatientFailureState extends DepartmentsState {
+//   final String error;
+//   AllEmergencyPatientFailureState(this.error);
+// }
 
 
 

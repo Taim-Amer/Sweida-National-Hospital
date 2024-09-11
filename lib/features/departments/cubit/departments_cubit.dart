@@ -43,7 +43,6 @@ class DepartmentsCubit extends Cubit<DepartmentsState> {
   }
 
   SpecificDepartmentModel? specificDepartmentModel;
-
   Future<void> getSpecificDepartment({required int id})async{
     emit(SpecificDepartmentLoadingState());
     DioHelper.postData(
@@ -70,10 +69,8 @@ class DepartmentsCubit extends Cubit<DepartmentsState> {
   }
 
   AcceptResidentModel? acceptResidentModel;
-
   void acceptResident({
     required int patientId,
-    required int departmentId,
   }) {
     emit(AcceptResidentLoadingState());
     DioHelper.postData(
@@ -81,44 +78,34 @@ class DepartmentsCubit extends Cubit<DepartmentsState> {
       token: token,
       data: {
         "patient_id": patientId,
-        "department_id": departmentId,
       },
     ).then((value) {
       acceptResidentModel = AcceptResidentModel.fromJson(value);
 
-      print(acceptResidentModel!.messgae);
-      print(acceptResidentModel!.messgae);
-      print(acceptResidentModel!.messgae);
-      print(acceptResidentModel!.messgae);
-
       emit(AcceptResidentSuccessState(acceptResidentModel!));
     }).catchError((onError) {
       emit(AcceptResidentFailureState(onError.toString()));
-
-      print(onError.toString());
-      print(onError.toString());
-      print(onError.toString());
-      print(onError.toString());
     });
   }
 
   AllPatientInDepartmentModel? allPatientInDepartmentModel;
-
-  void getAllPatientInDepartment({
-    required int departmentId,
-  }) {
-    emit(AllPatientInDepartmentLoadingState());
+  Future<void> getAllPatientInDepartment({required int departmentId}) async {
+    emit(state.copyWith(isLoadingDepartmentPatient: true));
     DioHelper.postData(
       endpoint: ALL_PATIENT_IN_DEPARTMENT,
       token: token,
-      data: {
-        "department_id": departmentId
-      },
+      data: {"department_id": departmentId},
     ).then((value) {
-      // allPatientInDepartmentModel = AllPatientInDepartmentModel.fromJson(value);
-      //====================================================================
+      AllPatientInDepartmentModel departmentModel = AllPatientInDepartmentModel.fromJson(value);
+      emit(state.copyWith(
+        allPatientInDepartmentModel: departmentModel,
+        isLoadingDepartmentPatient: false,
+      ));
     }).catchError((onError) {
-      emit(AllPatientInDepartmentFailureState(onError.toString()));
+      emit(state.copyWith(
+        error: onError.toString(),
+        isLoadingDepartmentPatient: false,
+      ));
     });
   }
 
@@ -155,17 +142,22 @@ class DepartmentsCubit extends Cubit<DepartmentsState> {
   }
 
   AllEmergencyPatientModel? allEmergencyPatientModel;
-  Future<void> getAllEmergencyPatient()async{
-    emit(AllEmergencyPatientLoadingState());
+  Future<void> getAllEmergencyPatient() async {
+    emit(state.copyWith(isLoadingEmergencyPatient: true));
     DioHelper.getData(
       endpoint: ALL_EMERGENCY_PATIENT,
-      token: token
-    ).then((value){
-      allEmergencyPatientModel = AllEmergencyPatientModel.fromJson(value);
-      emit(AllEmergencyPatientSuccessState(allEmergencyPatientModel!));
-    }).catchError((onError){
-      emit(AllEmergencyPatientFailureState(onError.toString()));
+      token: token,
+    ).then((value) {
+      AllEmergencyPatientModel emergencyModel = AllEmergencyPatientModel.fromJson(value);
+      emit(state.copyWith(
+        allEmergencyPatientModel: emergencyModel,
+        isLoadingEmergencyPatient: false,
+      ));
+    }).catchError((onError) {
+      emit(state.copyWith(
+        error: onError.toString(),
+        isLoadingEmergencyPatient: false,
+      ));
     });
   }
-
 }

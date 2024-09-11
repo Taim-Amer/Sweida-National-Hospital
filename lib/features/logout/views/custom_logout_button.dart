@@ -15,7 +15,7 @@ class CustomLogoutButton extends StatelessWidget {
       child: BlocConsumer<LogoutCubit, LogoutState>(
         listener: (context, state){
           if(state is LogoutSuccessState) {
-            navigateWithFadeAndFinish(context, LoginScreen());
+            navigateWithFadeAndFinish(context, const LoginScreen());
           }
         },
         builder: (context, state){
