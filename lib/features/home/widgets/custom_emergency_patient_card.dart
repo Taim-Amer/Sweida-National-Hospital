@@ -10,6 +10,7 @@ import 'package:hospital_management_system/features/drawer/views/drawer_layout.d
 import 'package:hospital_management_system/features/home/widgets/custom_emergency_patient_file_dialog.dart';
 import 'package:hospital_management_system/features/home/widgets/custom_emergency_transfer_dialog.dart';
 import 'package:hospital_management_system/features/patients/cubit/patients_cubit.dart';
+import 'package:hospital_management_system/features/tests/cubit/tests_cubit.dart';
 import 'package:iconsax/iconsax.dart';
 
 class CustomEmergencyPatientCard extends StatelessWidget {
@@ -51,6 +52,50 @@ class CustomEmergencyPatientCard extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            BlocConsumer<TestsCubit, TestsState>(
+              listener: (context, state){
+                if(state is EmergencyXRayRequestSuccessState){
+                  showToast("تم اضافة المريض الاسعافي الى طابور الانتظار لقسم الصور الشعاعية", ToastState.SUCCESS);
+                }else if(state is EmergencyXRayRequestFailureState){
+                  showToast("حدث خطأ ما يرجى اعادة المحاولة لاحقا", ToastState.ERROR);
+                }
+              },
+              builder: (context, state){
+                return CustomButton(
+                  function: (){
+                    TestsCubit.get(context).emergencyXrayRequest(patientID: id);
+                  },
+                  text: "صورة شعاعية",
+                  width: 100,
+                  color: Colors.deepOrangeAccent,
+                );
+              },
+            ),
+            const SizedBox(
+              width: Sizes.spaceBtwItems,
+            ),
+            BlocConsumer<TestsCubit, TestsState>(
+              listener: (context, state){
+                if(state is EmergencyTestRequestSuccessState){
+                  showToast("تم اضافة المريض الاسعافي الى طابور الانتظار لقسم التحاليل", ToastState.SUCCESS);
+                }else if(state is EmergencyTestRequestFailureState){
+                  showToast("حدث خطأ ما يرجى اعادة المحاولة لاحقا", ToastState.ERROR);
+                }
+              },
+              builder: (context, state){
+                  return CustomButton(
+                    function: (){
+                      TestsCubit.get(context).emergencyTestRequest(patientID: id);
+                    },
+                    text: "تحاليل",
+                    width: 90,
+                    color: Colors.pinkAccent,
+                  );
+                },
+            ),
+            const SizedBox(
+              width: Sizes.spaceBtwItems,
+            ),
             BlocConsumer<PatientsCubit, PatientsState>(
               listener: (context, state){
                 if(state is EmergencyTransferSuccessState){
@@ -66,7 +111,7 @@ class CustomEmergencyPatientCard extends StatelessWidget {
                       return showEmergencyTransferDialog(context, targetDepartmentController, id);
                     },
                     text: "تحويل",
-                    width: 100,
+                    width: 90,
                     labelColor: whiteColor,
                     color: Colors.greenAccent,
                   );
@@ -82,7 +127,7 @@ class CustomEmergencyPatientCard extends StatelessWidget {
                     return showEmergencyPatientFileDialog(context, fullName, address, birthDate, motherName, gender, chain);
                   },
                   text: "التفاصيل",
-                  width: 100,
+                  width: 90,
                   labelColor: whiteColor,
                 );
               },

@@ -27,3 +27,11 @@ const String PATIENT_FILE = "patient/file";
 const String EM_TRANSFER = "patient/emtransfer";
 
 const String TRANSFER = "patient/transfer";
+
+const String TEST_REQUEST = "request/test";
+
+const String EMERGENCY_TEST_REQUEST = "emrequest/test";
+
+const String XRAY_REQUEST = "request/xray";
+
+const String EMERGENCY_XRAY_REQUEST = "emrequest/xray";

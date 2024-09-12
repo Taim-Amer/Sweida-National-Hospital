@@ -5,6 +5,7 @@ import 'package:hospital_management_system/core/styles/sizes.dart';
 import 'package:hospital_management_system/features/departments/cubit/departments_cubit.dart';
 import 'package:hospital_management_system/features/home/widgets/custom_regular_patient_list.dart';
 import 'package:hospital_management_system/features/login/views/widgets/login_body_widget.dart';
+import 'package:hospital_management_system/features/tests/cubit/tests_cubit.dart';
 
 import 'widgets/custom_emergency_patient_list.dart';
 
@@ -20,6 +21,9 @@ class HomeScreen extends StatelessWidget {
             int? departmentID = int.tryParse(LoginBodyWidget.departmentController.text);
             return DepartmentsCubit()..getAllEmergencyPatient()..getAllPatientInDepartment(departmentId: departmentID!);
           },
+        ),
+        BlocProvider(
+          create: (context) => TestsCubit(),
         ),
       ],
       child: Container(
@@ -58,10 +62,10 @@ class HomeScreen extends StatelessWidget {
                               color: backgroundColor,
                               borderRadius: BorderRadius.circular(20)
                             ),
-                            child: const Image(
+                            child: Image(
                               fit: BoxFit.cover,
                               image: NetworkImage(
-                                  "assets/logos/Screenshot_20240911-174949_Chrome-removebg-preview.png",
+                                  logos[index],
                               ),
                             ),
                           ),
@@ -111,14 +115,8 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-// const SizedBox(height: Sizes.spaceBtwSections),
-// BlocBuilder<DepartmentsCubit, DepartmentsState>(
-//   builder: (context, state){
-//     if(state is SpecificDepartmentSuccessState){
-//       return CustomSpecificDepartmentCard(specificDepartmentModel: state.specificDepartmentModel,);
-//     }else if(state is AllEmergencyPatientLoadingState && state is SpecificDepartmentLoadingState){
-//       return const Center(child: CircularProgressIndicator());
-//     }
-//     return SizedBox();
-//   },
-// ),
+List<String> logos = [
+  "assets/logos/Screenshot_20240911-174949_Chrome-removebg-preview.png",
+  "assets/logos/Screenshot_20240911-174957_Chrome-removebg-preview.png",
+  "assets/logos/Screenshot_20240911-175359_Gallery-removebg-preview.png"
+];
