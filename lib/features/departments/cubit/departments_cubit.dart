@@ -23,6 +23,7 @@ class DepartmentsCubit extends Cubit<DepartmentsState> {
     emit(AllDepartmentsLoadingState());
     DioHelper.getData(
       endpoint: ALL_DEPARTMENTS,
+      token: token
     ).then((value) {
       allDepartmentModel = AllDepartmentModel.fromJson(value);
 

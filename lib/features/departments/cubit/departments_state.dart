@@ -3,15 +3,19 @@ part of 'departments_cubit.dart';
 class DepartmentsState {
   final AllPatientInDepartmentModel? allPatientInDepartmentModel;
   final AllEmergencyPatientModel? allEmergencyPatientModel;
+  final SpecificDepartmentModel? specificDepartmentModel;
   final bool isLoadingEmergencyPatient;
   final bool isLoadingDepartmentPatient;
+  final bool isLoadingSpecificDepartment;
   final String? error;
 
   DepartmentsState({
     this.allPatientInDepartmentModel,
     this.allEmergencyPatientModel,
+    this.specificDepartmentModel,
     this.isLoadingEmergencyPatient = false,
     this.isLoadingDepartmentPatient = false,
+    this.isLoadingSpecificDepartment = false,
     this.error,
   });
 
