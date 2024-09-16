@@ -35,3 +35,13 @@ const String EMERGENCY_TEST_REQUEST = "emrequest/test";
 const String XRAY_REQUEST = "request/xray";
 
 const String EMERGENCY_XRAY_REQUEST = "emrequest/xray";
+
+const String ALL_RECOURCES = "resources/all";
+
+const String STORE_RECOURCES = "resources/store";
+
+const String SHOW_RECOURCE_BY_ID = "resources/show";
+
+const String RECOURCE_UPDATE = "resources/update";
+
+const String RECOURCE_DELETE = "resources/delete";
