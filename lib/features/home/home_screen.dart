@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hospital_management_system/core/styles/colors.dart';
 import 'package:hospital_management_system/core/styles/sizes.dart';
+import 'package:hospital_management_system/core/widgets/custom_shimmer_list.dart';
 import 'package:hospital_management_system/features/departments/cubit/departments_cubit.dart';
 import 'package:hospital_management_system/features/home/widgets/custom_regular_patient_list.dart';
 import 'package:hospital_management_system/features/login/views/widgets/login_body_widget.dart';
 import 'package:hospital_management_system/features/tests/cubit/tests_cubit.dart';
-
 import 'widgets/custom_emergency_patient_list.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -59,14 +59,10 @@ class HomeScreen extends StatelessWidget {
                             width: 520,
                             height: 200,
                             decoration: BoxDecoration(
-                              color: backgroundColor,
-                              borderRadius: BorderRadius.circular(20)
+                                color: backgroundColor,
+                                borderRadius: BorderRadius.circular(20)
                             ),
-                            child: Image(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
-                                  logos[index],
-                              ),
+                            child: Image(fit: BoxFit.cover, image: NetworkImage(logos[index]),
                             ),
                           ),
                         );
@@ -86,6 +82,8 @@ class HomeScreen extends StatelessWidget {
                           builder: (context, state) {
                             if (state.allEmergencyPatientModel != null) {
                               return CustomEmergencyPatientList(allEmergencyPatientModel: state.allEmergencyPatientModel!);
+                            } else if(state.isLoadingEmergencyPatient) {
+                              return const CustomShimmerList(shimmerItemCount: 6);
                             }
                             return const SizedBox();
                           },
@@ -98,6 +96,8 @@ class HomeScreen extends StatelessWidget {
                           builder: (context, state){
                             if(state.allPatientInDepartmentModel != null){
                               return CustomRegularPatientList(allPatientInDepartmentModel: state.allPatientInDepartmentModel!);
+                            } else if(state.isLoadingDepartmentPatient) {
+                              return const CustomShimmerList(shimmerItemCount: 6);
                             }
                             return const SizedBox();
                           },

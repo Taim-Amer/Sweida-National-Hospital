@@ -16,22 +16,25 @@ Future<dynamic> showRegularTransferDialog(BuildContext context, TextEditingContr
     builder: (context){
       return AlertDialog(
         backgroundColor: backgroundColor,
-        content: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(
-                height: 300,
-                width: 400,
-                child: Image(image: AssetImage("assets/images/MoH_Logo-removebg-preview.png"))),
-            const SizedBox(height: Sizes.spaceBtwSections,),
-            CustomTextField(
-              controller: targetDepartmentController,
-              type: TextInputType.text,
-              validator: (value){},
-              label: "القسم المستهدف",
-              suffix: Icons.numbers,
+        content: SizedBox(
+          width: 300,
+          height: 400,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Image(image: NetworkImage("assets/logos/Screenshot_20240912-222951_Chrome-removebg-preview.png")),
+                const SizedBox(height: Sizes.spaceBtwSections,),
+                CustomTextField(
+                  controller: targetDepartmentController,
+                  type: TextInputType.text,
+                  validator: (value){},
+                  label: "القسم المستهدف",
+                  suffix: Icons.numbers,
+                ),
+              ],
             ),
-          ],
+          ),
         ),
         actions: [
           BlocConsumer<PatientsCubit, PatientsState>(
@@ -50,8 +53,6 @@ Future<dynamic> showRegularTransferDialog(BuildContext context, TextEditingContr
                   CustomButton(
                     function: (){
                       int? targetID = int.tryParse(targetDepartmentController.text);
-                      print(patientID);
-                      print(patientID);
                       PatientsCubit.get(context).regularTransfer(
                           patientID: patientID,
                           departmentID: targetID!

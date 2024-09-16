@@ -43,7 +43,6 @@ class CustomRegularXrayQueueButton extends StatelessWidget {
               leading: Icon(Iconsax.square, color: thirdColor),
               title: Text(
                 "الطابور",
-                textAlign: TextAlign.right,
                 style: TextStyle(
                   fontSize:  18,
                   color: thirdColor,

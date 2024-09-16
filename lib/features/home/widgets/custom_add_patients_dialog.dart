@@ -4,7 +4,6 @@ import 'package:hospital_management_system/core/styles/colors.dart';
 import 'package:hospital_management_system/core/styles/sizes.dart';
 import 'package:hospital_management_system/core/widgets/custom_button.dart';
 import 'package:hospital_management_system/core/widgets/custom_text_field.dart';
-import 'package:hospital_management_system/core/widgets/custom_toast_widget.dart';
 import 'package:hospital_management_system/features/home/widgets/custom_cancel_button.dart';
 import 'package:hospital_management_system/features/patients/cubit/patients_cubit.dart';
 import 'package:iconsax/iconsax.dart';
@@ -15,79 +14,80 @@ Future<dynamic> showPatientAddDialog(BuildContext context, TextEditingController
     builder: (context){
       return AlertDialog(
         backgroundColor: backgroundColor,
-        content: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(
-                  height: 300,
-                  width: 400,
-                  child: Image(image: AssetImage("assets/images/MoH_Logo-removebg-preview.png"))),
-              const SizedBox(height: Sizes.spaceBtwSections,),
-              CustomTextField(
-                controller: nameController,
-                type: TextInputType.name,
-                validator: (value){},
-                label: "اسم المريض",
-                suffix: Iconsax.user,
-              ),
-              const SizedBox(height: Sizes.spaceBtwItems,),
-              CustomTextField(
-                controller: addressController,
-                type: TextInputType.name,
-                validator: (value){},
-                label: "العنوان",
-                suffix: Iconsax.home,
-              ),
-              const SizedBox(height: Sizes.spaceBtwItems,),
-              CustomTextField(
-                controller: birthDateController,
-                type: TextInputType.name,
-                validator: (value){},
-                label: "تاريخ الميلاد",
-                suffix: Iconsax.calendar,
-              ),
-              const SizedBox(height: Sizes.spaceBtwItems,),
-              CustomTextField(
-                controller: motherNameController,
-                type: TextInputType.name,
-                validator: (value){},
-                label: "اسم الام",
-                suffix: Iconsax.woman,
-              ),
-              const SizedBox(height: Sizes.spaceBtwItems,),
-              CustomTextField(
-                controller: chainController,
-                type: TextInputType.name,
-                validator: (value){},
-                label: "رقم القيد",
-                suffix: Icons.numbers,
-              ),
-              const SizedBox(height: Sizes.spaceBtwItems,),
-              CustomTextField(
-                controller: genderController,
-                type: TextInputType.name,
-                validator: (value){},
-                label: "الجنس",
-                suffix:  Iconsax.man,
-              ),
-              const SizedBox(height: Sizes.spaceBtwItems,),
-              CustomTextField(
-                controller: caseController,
-                type: TextInputType.name,
-                validator: (value){},
-                label: "وصف الحالة",
-                suffix: Iconsax.health,
-              ),
-              const SizedBox(height: Sizes.spaceBtwItems,),
-              CustomTextField(
-                controller: treatmentController,
-                type: TextInputType.name,
-                validator: (value){},
-                label: "العلاج المطلوب",
-                suffix: Icons.local_pharmacy_outlined,
-              ),
-            ],
+        content: SizedBox(
+          width: 300,
+          height: 500,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Image(image: AssetImage("assets/logos/Screenshot_20240911-174957_Chrome-removebg-preview (2).png")),
+                const SizedBox(height: Sizes.spaceBtwSections,),
+                CustomTextField(
+                  controller: nameController,
+                  type: TextInputType.name,
+                  validator: (value){},
+                  label: "اسم المريض",
+                  suffix: Iconsax.user,
+                ),
+                const SizedBox(height: Sizes.spaceBtwItems,),
+                CustomTextField(
+                  controller: addressController,
+                  type: TextInputType.name,
+                  validator: (value){},
+                  label: "العنوان",
+                  suffix: Iconsax.home,
+                ),
+                const SizedBox(height: Sizes.spaceBtwItems,),
+                CustomTextField(
+                  controller: birthDateController,
+                  type: TextInputType.name,
+                  validator: (value){},
+                  label: "تاريخ الميلاد",
+                  suffix: Iconsax.calendar,
+                ),
+                const SizedBox(height: Sizes.spaceBtwItems,),
+                CustomTextField(
+                  controller: motherNameController,
+                  type: TextInputType.name,
+                  validator: (value){},
+                  label: "اسم الام",
+                  suffix: Iconsax.woman,
+                ),
+                const SizedBox(height: Sizes.spaceBtwItems,),
+                CustomTextField(
+                  controller: chainController,
+                  type: TextInputType.name,
+                  validator: (value){},
+                  label: "رقم القيد",
+                  suffix: Icons.numbers,
+                ),
+                const SizedBox(height: Sizes.spaceBtwItems,),
+                CustomTextField(
+                  controller: genderController,
+                  type: TextInputType.name,
+                  validator: (value){},
+                  label: "الجنس",
+                  suffix:  Iconsax.man,
+                ),
+                const SizedBox(height: Sizes.spaceBtwItems,),
+                CustomTextField(
+                  controller: caseController,
+                  type: TextInputType.name,
+                  validator: (value){},
+                  label: "وصف الحالة",
+                  suffix: Iconsax.health,
+                ),
+                const SizedBox(height: Sizes.spaceBtwItems,),
+                CustomTextField(
+                  controller: treatmentController,
+                  type: TextInputType.name,
+                  validator: (value){},
+                  label: "العلاج المطلوب",
+                  suffix: Icons.local_pharmacy_outlined,
+                ),
+              ],
+            ),
           ),
         ),
         actions: [

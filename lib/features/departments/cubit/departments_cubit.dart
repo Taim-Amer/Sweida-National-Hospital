@@ -26,20 +26,9 @@ class DepartmentsCubit extends Cubit<DepartmentsState> {
       token: token
     ).then((value) {
       allDepartmentModel = AllDepartmentModel.fromJson(value);
-
-      print(allDepartmentModel!.allDepartments!.first.name);
-      print(allDepartmentModel!.allDepartments!.first.name);
-      print(allDepartmentModel!.allDepartments!.first.name);
-      print(allDepartmentModel!.allDepartments!.first.name);
-
       emit(AllDepartmentsSuccessState(allDepartmentModel!));
     }).catchError((onError) {
       emit(AllDepartmentsFailureState(onError.toString()));
-
-      print(onError.toString());
-      print(onError.toString());
-      print(onError.toString());
-      print(onError.toString());
     });
   }
 
@@ -53,18 +42,8 @@ class DepartmentsCubit extends Cubit<DepartmentsState> {
       },
     ).then((value) {
       specificDepartmentModel = SpecificDepartmentModel.fromJson(value);
-
-      print(specificDepartmentModel!.depDetails!.name);
-      print(specificDepartmentModel!.depDetails!.name);
-      print(specificDepartmentModel!.depDetails!.name);
-      print(specificDepartmentModel!.depDetails!.name);
-
       emit(SpecificDepartmentSuccessState(specificDepartmentModel!));
     }).catchError((onError) {
-      print(onError.toString());
-      print(onError.toString());
-      print(onError.toString());
-
       emit(SpecificDepartmentFailureState(onError.toString()));
     });
   }

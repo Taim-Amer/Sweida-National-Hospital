@@ -54,7 +54,7 @@ class CustomAddPatientButton extends StatelessWidget {
             child: const ListTile(
               leading: Icon(Iconsax.add, color: thirdColor),
               title: Text(
-                "اضافة",
+                "اضافة مريض",
                 style: TextStyle(
                   fontSize:  18,
                   color: thirdColor,

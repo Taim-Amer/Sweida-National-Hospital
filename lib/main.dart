@@ -4,11 +4,9 @@ import 'package:hospital_management_system/core/bloc_observer.dart';
 import 'package:hospital_management_system/core/network/local/cache_helper.dart';
 import 'package:hospital_management_system/core/network/remote/dio_helper.dart';
 import 'package:hospital_management_system/features/departments/cubit/departments_cubit.dart';
-import 'package:hospital_management_system/features/departments/views/department_screen.dart';
-import 'package:hospital_management_system/features/drawer/views/drawer_layout.dart';
 import 'package:hospital_management_system/features/login/views/login_screen.dart';
-import 'package:hospital_management_system/features/login/views/widgets/login_body_widget.dart';
 import 'package:hospital_management_system/features/patients/cubit/patients_cubit.dart';
+import 'package:hospital_management_system/features/surgery/cubit/surgery_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +17,7 @@ void main() async {
   String? token = CacheHelper.getData(key: "token");
   print(token);
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -41,7 +39,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Ubuntu',
         ),
         debugShowCheckedModeBanner: false,
-        home: LoginScreen(),
+        home: const LoginScreen(),
       ),
     );
   }
