@@ -45,3 +45,13 @@ const String SHOW_RECOURCE_BY_ID = "resources/show";
 const String RECOURCE_UPDATE = "resources/update";
 
 const String RECOURCE_DELETE = "resources/delete";
+
+const String ALL_EQ = "equipment/all" ;
+
+const String DELETE_EQ = "equipment/store" ;
+
+const String SHOW_EQ = "equipment/show" ;
+
+const String STORE_EQ = "equipment/update" ;
+
+const String UPDATE_EQ = "equipment/delete" ;
