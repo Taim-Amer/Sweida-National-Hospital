@@ -7,6 +7,7 @@ import 'package:hospital_management_system/features/home/widgets/custom_regular_
 import 'package:hospital_management_system/features/home/widgets/custom_regular_test_button.dart';
 import 'package:hospital_management_system/features/home/widgets/custom_regular_transfer_button.dart';
 import 'package:hospital_management_system/features/home/widgets/custom_regular_xray_button.dart';
+import 'package:hospital_management_system/features/login/views/widgets/login_body_widget.dart';
 import 'package:iconsax/iconsax.dart';
 
 class CustomRegularPatientCard extends StatelessWidget {
@@ -19,6 +20,7 @@ class CustomRegularPatientCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int? departmentID = int.tryParse(LoginBodyWidget.departmentController.text);
     return Container(
       margin: const EdgeInsets.symmetric(vertical: Sizes.spaceBtwItems / 2),
       decoration: BoxDecoration(
@@ -32,16 +34,18 @@ class CustomRegularPatientCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             CustomRegularXrayButton(id: id),
-            const SizedBox(
-              width: Sizes.spaceBtwItems,
-            ),
+            const SizedBox(width: Sizes.spaceBtwItems),
             CustomRegularTestButton(id: id),
             const SizedBox(width: Sizes.spaceBtwItems),
             CustomRegularFileButton(id: id),
             const SizedBox(width: Sizes.spaceBtwItems),
+            departmentID == 16 || departmentID == 2 ? Column(
+              children: [
+                CustomRegularSurgeryButton(id: id),
+                const SizedBox(width: Sizes.spaceBtwItems),
+              ],
+            ) : const SizedBox(),
             CustomRegularTransferButton(targetDepartment: targetDepartment, id: id),
-            const SizedBox(width: Sizes.spaceBtwItems),
-            CustomRegularSurgeryButton(id: id),
             const Spacer(),
             titleText("$id.$fullName", color: defaultDarkColor, size: 18),
             const SizedBox(width: Sizes.spaceBtwItems),

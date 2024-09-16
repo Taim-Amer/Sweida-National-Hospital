@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hospital_management_system/core/styles/colors.dart';
 import 'package:hospital_management_system/core/styles/sizes.dart';
-import 'package:hospital_management_system/core/widgets/custom_button.dart';
 import 'package:hospital_management_system/core/widgets/text_items.dart';
 import 'package:hospital_management_system/features/home/widgets/custom_cancel_button.dart';
 import 'package:hospital_management_system/features/tests/models/all_regular_xray_model.dart';
@@ -15,7 +14,7 @@ Future<dynamic> showRegularQueueXrayDialog(BuildContext context, AllRegularXrayM
       return AlertDialog(
         title: const Image(image: NetworkImage("assets/logos/Screenshot_20240912-114218_Chrome-removebg-preview.png"),),
         content: SizedBox(
-          width: 600,
+          width: 200,
           height: 500,
           child: ListView.builder(
             itemCount: allRegularXrayModel.allPatientInXRayQueue!.length,

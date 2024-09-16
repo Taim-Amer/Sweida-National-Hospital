@@ -7,6 +7,7 @@ import 'package:hospital_management_system/features/home/widgets/custom_emergenc
 import 'package:hospital_management_system/features/home/widgets/custom_emergency_test_button.dart';
 import 'package:hospital_management_system/features/home/widgets/custom_emergency_transfer_button.dart';
 import 'package:hospital_management_system/features/home/widgets/custom_emergency_xray_button.dart';
+import 'package:hospital_management_system/features/login/views/widgets/login_body_widget.dart';
 import 'package:iconsax/iconsax.dart';
 
 class CustomEmergencyPatientCard extends StatelessWidget {
@@ -37,6 +38,7 @@ class CustomEmergencyPatientCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int? departmentID = int.tryParse(LoginBodyWidget.departmentController.text);
     return Container(
       margin: const EdgeInsets.symmetric(vertical: Sizes.spaceBtwItems / 2),
       decoration: BoxDecoration(
@@ -54,9 +56,13 @@ class CustomEmergencyPatientCard extends StatelessWidget {
             const SizedBox(width: Sizes.spaceBtwItems,),
             CustomEmergencyFileButton(fullName: fullName, address: address, birthDate: birthDate, motherName: motherName, gender: gender, chain: chain),
             const SizedBox(width: Sizes.spaceBtwItems),
+            departmentID == 16 || departmentID == 2 ? Column(
+              children: [
+                CustomEmergencySurgeryButton(id: id),
+                const SizedBox(width: Sizes.spaceBtwItems),
+              ],
+            ) : const SizedBox(),
             CustomEmergencyTransferButton(targetDepartmentController: targetDepartmentController, id: id),
-            const SizedBox(width: Sizes.spaceBtwItems),
-            CustomEmergencySurgeryButton(id: id),
             const Spacer(),
             titleText("$fullName.$id", color: defaultDarkColor, size: 18),
             const SizedBox(width: Sizes.spaceBtwItems),

@@ -16,7 +16,7 @@ Future<dynamic> showEmergencyQueueXrayDialog(BuildContext context, AllEmergencyX
       return AlertDialog(
         title: const Image(image: NetworkImage("assets/logos/Screenshot_20240912-114218_Chrome-removebg-preview.png"),),
         content: SizedBox(
-          width: 600,
+          width: 200,
           height: 500,
           child: ListView.builder(
             itemCount: allEmergencyXrayModel.allPatientInEmergencyXRayQueue!.length,

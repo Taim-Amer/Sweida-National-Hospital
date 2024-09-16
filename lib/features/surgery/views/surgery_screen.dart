@@ -67,6 +67,19 @@ class SurgeryScreen extends StatelessWidget {
                         Expanded(
                           flex: 2,
                           child: BlocBuilder<SurgeryCubit, SurgeryState>(
+                              builder: (context, state){
+                                if(state.allEmergencySurgeryModel != null){
+                                  return CustomEmergencySurgeryPatientList(allEmergencySurgeryModel: state.allEmergencySurgeryModel!);
+                                }else if(state.isLoadingEmergencySurgery){
+                                  return const CustomShimmerList(shimmerItemCount: 7);
+                                }
+                                return const SizedBox();
+                              }),
+                        ),
+                        const SizedBox(width: Sizes.spaceBtwSections),
+                        Expanded(
+                          flex: 2,
+                          child: BlocBuilder<SurgeryCubit, SurgeryState>(
                             builder: (context, state){
                               if(state.allRegularSurgeryModel != null){
                                 return CustomRegularSurgeryPatientList(allRegularSurgeryModel: state.allRegularSurgeryModel!);
@@ -76,19 +89,6 @@ class SurgeryScreen extends StatelessWidget {
                               return const SizedBox();
                             },
                           ),
-                        ),
-                        const SizedBox(width: Sizes.spaceBtwSections),
-                        Expanded(
-                          flex: 2,
-                          child: BlocBuilder<SurgeryCubit, SurgeryState>(
-                              builder: (context, state){
-                                if(state.allEmergencySurgeryModel != null){
-                                  return CustomEmergencySurgeryPatientList(allEmergencySurgeryModel: state.allEmergencySurgeryModel!);
-                                }else if(state.isLoadingEmergencySurgery){
-                                  return const CustomShimmerList(shimmerItemCount: 7);
-                                }
-                                return const SizedBox();
-                              }),
                         ),
                       ],
                     ),

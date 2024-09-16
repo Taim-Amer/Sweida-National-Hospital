@@ -3,7 +3,8 @@ import 'package:hospital_management_system/features/surgery/models/all_regular_s
 import 'package:hospital_management_system/features/surgery/views/widgets/custom_regular_surgery_patient_card.dart';
 
 class CustomRegularSurgeryPatientList extends StatelessWidget {
-  const CustomRegularSurgeryPatientList({super.key, required this.allRegularSurgeryModel});
+  const CustomRegularSurgeryPatientList(
+      {super.key, required this.allRegularSurgeryModel});
 
   final AllRegularSurgeryModel allRegularSurgeryModel;
 
@@ -11,9 +12,18 @@ class CustomRegularSurgeryPatientList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: allRegularSurgeryModel.allPatientInSurgryQueue!.length,
-      itemBuilder: (context, index){
+      itemBuilder: (context, index) {
+        var model = allRegularSurgeryModel.allPatientInSurgryQueue![index];
         return CustomRegularSurgeryPatientCard(
-          fullName: allRegularSurgeryModel.allPatientInSurgryQueue![index].patient!.fullName ?? "",
+          fullName: model.patient!.fullName ?? "",
+          id: model.patientId ?? 0,
+          address: model.patient!.address ?? "",
+          birthDate: model.patient!.dateOfBirth ?? "",
+          motherName: model.patient!.momName ?? "",
+          chain: model.patient!.chain ?? 0,
+          gender: model.patient!.gender ?? "",
+          caseDescription: model.patient!.caseDescription ?? "",
+          treatmentRequired: model.patient!.treatmentRequired ?? "",
         );
       },
     );

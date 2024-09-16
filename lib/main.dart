@@ -6,7 +6,6 @@ import 'package:hospital_management_system/core/network/remote/dio_helper.dart';
 import 'package:hospital_management_system/features/departments/cubit/departments_cubit.dart';
 import 'package:hospital_management_system/features/login/views/login_screen.dart';
 import 'package:hospital_management_system/features/patients/cubit/patients_cubit.dart';
-import 'package:hospital_management_system/features/surgery/cubit/surgery_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
