@@ -46,6 +46,25 @@ class DioHelper {
     }
   }
 
+  static Future<Map<String, dynamic>> putData({
+    required String endpoint,
+    Map<String, dynamic>? data,
+    String? token,
+  }) async {
+    dio!.options.headers['Content-Type'] = 'application/json';
+    if (token != null) {
+      dio!.options.headers['token'] = token;
+    }
+
+    Response response = await dio!.put('$baseUrl$endpoint', data: data);
+
+    if (response.statusCode == 200) {
+      return response.data as Map<String, dynamic>;
+    } else {
+      throw Exception('Failed to post data. Status code: ${response.statusCode}');
+    }
+  }
+
 
   static Future<Map<String, dynamic>> deleteData({
     required String endpoint,

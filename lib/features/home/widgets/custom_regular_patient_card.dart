@@ -39,7 +39,7 @@ class CustomRegularPatientCard extends StatelessWidget {
             const SizedBox(width: Sizes.spaceBtwItems),
             CustomRegularFileButton(id: id),
             const SizedBox(width: Sizes.spaceBtwItems),
-            departmentID == 16 || departmentID == 2 ? Column(
+            departmentID == 16 || departmentID == 2 ? Row(
               children: [
                 CustomRegularSurgeryButton(id: id),
                 const SizedBox(width: Sizes.spaceBtwItems),

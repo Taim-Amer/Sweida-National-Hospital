@@ -26,12 +26,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => PatientsCubit(),
-        ),
-        BlocProvider(
-          create: (context) => DepartmentsCubit(),
-        ),
+        BlocProvider(create: (context) => PatientsCubit()),
+        BlocProvider(create: (context) => DepartmentsCubit()),
       ],
       child: MaterialApp(
         theme: ThemeData(

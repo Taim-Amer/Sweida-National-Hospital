@@ -56,7 +56,7 @@ class CustomEmergencyPatientCard extends StatelessWidget {
             const SizedBox(width: Sizes.spaceBtwItems,),
             CustomEmergencyFileButton(fullName: fullName, address: address, birthDate: birthDate, motherName: motherName, gender: gender, chain: chain),
             const SizedBox(width: Sizes.spaceBtwItems),
-            departmentID == 16 || departmentID == 2 ? Column(
+            departmentID == 16 || departmentID == 2 ? Row(
               children: [
                 CustomEmergencySurgeryButton(id: id),
                 const SizedBox(width: Sizes.spaceBtwItems),

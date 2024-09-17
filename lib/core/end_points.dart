@@ -1,5 +1,3 @@
-// ignore_for_file: constant_identifier_names
-
 const String LOGIN = "login";
 
 const String LOGOUT = "logout";
@@ -59,6 +57,47 @@ const String ALL_SURGERY = "surgery/all";
 const String ADD_EMERGENCY_SURGERY = "surgery/emadd";
 
 const String ALL_EMERGENCY_SURGERY = "surgery/emall";
+
+const String ALL_RECOURCES = "resources/all";
+
+const String STORE_RECOURCES = "resources/store";
+
+const String SHOW_RECOURCE_BY_ID = "resources/show";
+
+const String RECOURCE_UPDATE = "resources/update";
+
+const String RECOURCE_DELETE = "resources/delete";
+
+const String ALL_EQ = "equipment/all" ;
+
+const String DELETE_EQ = "equipment/store" ;
+
+const String SHOW_EQ = "equipment/show" ;
+
+const String STORE_EQ = "equipment/update" ;
+
+const String UPDATE_EQ = "equipment/delete" ;
+
+const String ALL_DEATHS = "deaths/all";
+
+const String DEATH_BY_DATE = "deaths/date";
+
+const String STORE_DEATH = "deaths/store";
+
+const String UPDATE_DEATH = "deaths/update";
+
+const String DELETE_DEATH = "deaths/delete";
+
+const String ALL_BIRTHS = "births/all";
+
+const String BIRTH_BY_DATE = "births/date";
+
+const String STORE_BIRTH = "births/store";
+
+const String UPDATE_BIRTH = "births/update";
+
+const String DELETE_BIRTH = "births/delete";
+
 
 
 
