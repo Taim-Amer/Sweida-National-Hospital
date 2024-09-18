@@ -1,1 +1,1 @@
-class AbsentPanaltyModel {}
+class AbsentPenaltyModel {}

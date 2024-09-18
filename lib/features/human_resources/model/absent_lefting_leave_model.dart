@@ -1,1 +1,1 @@
-class AbsentLifingLeaveModel {}
+class AbsentLeftingLeaveModel {}

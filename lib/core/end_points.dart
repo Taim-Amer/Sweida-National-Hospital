@@ -98,7 +98,31 @@ const String UPDATE_BIRTH = "births/update";
 
 const String DELETE_BIRTH = "births/delete";
 
+const String ESTABLISH_ATTENDANCE = "HR/establish";
 
+const String LEFTING_LEAVE = "HR/leave";
+
+const String ABSENT_PENALTY = "HR/panalty";
+
+const String UPDATE_ATTENDANCE = "HR/atupdate";
+
+const String UPDATE_ABSENT = "HR/abupdate";
+
+const String ALL_ATTENDANCE_IN_DATE = "HR/allat";
+
+const String ALL_ABSENT_IN_DATE = "HR/allabc";
+
+const String ALL_PENALTY_IN_DATE = "HR/allpen";
+
+const String ADD_EMP = "HR/addemp" ;
+
+const String UPDATE_EMP = "HR/updateemp" ;
+
+const String SHOW_EMP = "HR/showemp";
+
+const String DELETE_EMP = "HR/deleteemp" ;
+
+const String ALL_EMP = "HR/allemp";
 
 
 
