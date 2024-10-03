@@ -1,8 +1,11 @@
+// ignore_for_file: unnecessary_null_comparison
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hospital_management_system/core/styles/colors.dart';
 import 'package:hospital_management_system/core/styles/sizes.dart';
 import 'package:hospital_management_system/core/widgets/custom_button.dart';
+import 'package:hospital_management_system/core/widgets/custom_date_picker.dart';
+import 'package:hospital_management_system/core/widgets/custom_dialog_image.dart';
 import 'package:hospital_management_system/core/widgets/custom_text_field.dart';
 import 'package:hospital_management_system/features/births/cubit/births_cubit.dart';
 import 'package:hospital_management_system/features/home/widgets/custom_cancel_button.dart';
@@ -15,6 +18,7 @@ Future<dynamic> showCustomAddBirthDialog(BuildContext context){
   TextEditingController cityNameController = TextEditingController();
   TextEditingController birthDateController = TextEditingController();
   TextEditingController nationalIDController = TextEditingController();
+
   return showDialog(
     context: context,
     builder: (context){
@@ -27,7 +31,7 @@ Future<dynamic> showCustomAddBirthDialog(BuildContext context){
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Image(image: AssetImage("assets/logos/Screenshot_20240911-174957_Chrome-removebg-preview (2).png")),
+                const CustomDialogImage(image: "assets/logos/Screenshot_20240911-174957_Chrome-removebg-preview (2).png"),
                 const SizedBox(height: Sizes.spaceBtwSections,),
                 CustomTextField(
                   controller: nameController,
@@ -42,7 +46,7 @@ Future<dynamic> showCustomAddBirthDialog(BuildContext context){
                   type: TextInputType.name,
                   validator: (value){},
                   label: "اسم الاب",
-                  suffix: Iconsax.man,
+                  suffix: Iconsax.user,
                 ),
                 const SizedBox(height: Sizes.spaceBtwItems,),
                 CustomTextField(
@@ -53,13 +57,7 @@ Future<dynamic> showCustomAddBirthDialog(BuildContext context){
                   suffix: Iconsax.woman,
                 ),
                 const SizedBox(height: Sizes.spaceBtwItems,),
-                CustomTextField(
-                  controller: birthDateController,
-                  type: TextInputType.name,
-                  validator: (value){},
-                  label: "تاريخ الميلاد",
-                  suffix: Iconsax.calendar,
-                ),
+                CustomDatePicker(dateController: birthDateController),
                 const SizedBox(height: Sizes.spaceBtwItems,),
                 CustomTextField(
                   controller: cityNameController,
@@ -86,7 +84,14 @@ Future<dynamic> showCustomAddBirthDialog(BuildContext context){
               return CustomButton(
                 function: (){
                   if(nameController.text != null && fatherNameController.text != null && motherNameController.text != null && cityNameController.text != null && birthDateController.text != null && nationalIDController.text != null){
-                    BirthsCubit.get(context).storeBirth(name: nameController.text, fatherName: fatherNameController.text, motherName: motherNameController.text, birthDate: birthDateController.text, city: cityNameController.text, nationalID: nationalIDController.text);
+                    BirthsCubit.get(context).storeBirth(
+                        name: nameController.text,
+                        fatherName: fatherNameController.text,
+                        motherName: motherNameController.text,
+                        birthDate: birthDateController.text,
+                        city: cityNameController.text,
+                        nationalID: nationalIDController.text,
+                    );
                   }
                 },
                 text: "اضافة",

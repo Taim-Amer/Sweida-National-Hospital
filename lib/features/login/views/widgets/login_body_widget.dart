@@ -69,7 +69,7 @@ class LoginBodyWidget extends StatelessWidget {
                           password: passwordController.text,
                         );
                       }else {
-                        showToast("Please check your input data", ToastState.WARNING);
+                        showToast("الرجاء التأكد من المعلومات المدخلة", ToastState.WARNING);
                       }
                     },
                     text: "تسجيل الدخول",

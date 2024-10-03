@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hospital_management_system/core/styles/colors.dart';
 import 'package:hospital_management_system/core/widgets/custom_button.dart';
 import 'package:hospital_management_system/features/home/widgets/custom_regular_patient_file_dialog.dart';
 import 'package:hospital_management_system/features/patients/cubit/patients_cubit.dart';
@@ -19,8 +20,8 @@ class CustomRegularFileButton extends StatelessWidget {
         if(state is PatientFileSuccessState){
           showRegularPatientFileDialog(
             context,
-            state.patientFileModel.data!.other!.departmentId?? 0,
-            state.patientFileModel.data!.other!.patientId?? 0,
+            state.patientFileModel.data!.other!.departmentId ?? 0,
+            state.patientFileModel.data!.other!.patientId ?? 0,
             state.patientFileModel.data!.patientInfo!.fullName ?? "",
             state.patientFileModel.data!.patientInfo!.address ?? "",
             state.patientFileModel.data!.patientInfo!.dateOfBirth ?? "",
@@ -36,7 +37,8 @@ class CustomRegularFileButton extends StatelessWidget {
           },
           text: "الملف",
           width: 90,
-          color: const Color(0xffdfb2f4),
+          // color: const Color(0xffdfb2f4),
+          color: defaultLightColor,
         );
       },
     );

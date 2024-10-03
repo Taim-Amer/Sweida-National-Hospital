@@ -35,11 +35,10 @@ class HumanResourcesCubit extends Cubit<HumanResourcesState> {
       establishAttendanceModel = EstablishAttendanceModel.fromJson(value);
       emit(EstablishAttendanceSuccessState(establishAttendanceModel!));
     }).catchError((onError) {
+      print(onError.toString());
       emit(EstablishAttendanceFailureState(onError.toString()));
     });
   }
-
-  AbsentLeftingLeaveModel? absentLeftingLeaveModel;
 
   void absentLeave({required int employeeID, required String date}) {
     emit(AbsentLeftingLeaveLoadingState());
@@ -47,14 +46,12 @@ class HumanResourcesCubit extends Cubit<HumanResourcesState> {
         endpoint: LEFTING_LEAVE,
         token: token,
         data: {"emp_id": employeeID, "date": date}).then((value) {
-      // absentLeftingLeaveModel = AbsentLeftingLeaveModel.fromJson(value);
-      emit(AbsentLeftingLeaveSuccessState(absentLeftingLeaveModel!));
+      emit(AbsentLeftingLeaveSuccessState());
     }).catchError((onError) {
+      print(onError.toString());
       emit(AbsentLeftingLeaveFailureState(onError.toString()));
     });
   }
-
-  AbsentPenaltyModel? absentPenaltyModel;
 
   void absentPenalty({required int employeeID, required String date}) {
     emit(AbsentPenaltyLoadingState());
@@ -62,9 +59,9 @@ class HumanResourcesCubit extends Cubit<HumanResourcesState> {
       "emp_id": employeeID,
       "date": date,
     }).then((value) {
-      // absentPenaltyModel = AbsentPenaltyModel.fromJson(value);
-      emit(AbsentPenaltySuccessState(absentPenaltyModel!));
+      emit(AbsentPenaltySuccessState());
     }).catchError((onError) {
+      print(onError.toString());
       emit(AbsentPenaltyFailureState(onError.toString()));
     });
   }
@@ -104,13 +101,12 @@ class HumanResourcesCubit extends Cubit<HumanResourcesState> {
 
   AllAttendanceInDateModel? allAttendanceInDateModel;
 
-  void allAttendanceInDate({required String date}) {
+  void allAttendanceInDate() {
     emit(AllAttendanceInDateLoadingState());
     DioHelper.postData(
         endpoint: ALL_ATTENDANCE_IN_DATE,
-        token: token,
-        data: {"date": date}).then((value) {
-      // allAttendanceInDateModel = AllAttendanceInDateModel.fromJson(value);
+        token: token).then((value) {
+      allAttendanceInDateModel = AllAttendanceInDateModel.fromJson(value);
       emit(AllAttendanceInDateSuccessState(allAttendanceInDateModel!));
     }).catchError((onError) {
       emit(AllAttendanceInDateFailureState(onError.toString()));
@@ -119,15 +115,15 @@ class HumanResourcesCubit extends Cubit<HumanResourcesState> {
 
   AllAbsentInDateModel? allAbsentInDateModel;
 
-  void allAbsentInDate({required String date}) {
+  void allAbsentInDate() {
     emit(AllAbsentInDateLoadingState());
     DioHelper.postData(
         endpoint: ALL_ABSENT_IN_DATE,
-        token: token,
-        data: {"date": date}).then((value) {
-      // allAbsentInDateModel = AllAbsentInDateModel.fromJson(value);
+        token: token).then((value) {
+      allAbsentInDateModel = AllAbsentInDateModel.fromJson(value);
       emit(AllAbsentInDateSuccessState(allAbsentInDateModel!));
     }).catchError((onError) {
+      print(onError.toString());
       emit(AllAbsentInDateFailureState(onError.toString()));
     });
   }
@@ -140,24 +136,28 @@ class HumanResourcesCubit extends Cubit<HumanResourcesState> {
       endpoint: ALL_PENALTY_IN_DATE,
       token: token,
     ).then((value) {
-      // allPenaltyInDateModel = AllPenaltyInDateModel.fromJson(value);
+      allPenaltyInDateModel = AllPenaltyInDateModel.fromJson(value);
       emit(AllPenaltyInDateSuccessState(allPenaltyInDateModel!));
     }).catchError((onError) {
       emit(AllPenaltyInDateFailureState(onError.toString()));
     });
   }
 
-  AddEmployeeModel? addEmployeeModel;
+  // AddEmployeeModel? addEmployeeModel;
 
-  void addEmployee({required String name, required String departmantID}) {
+  void addEmployee({required String name, required String departmantID, required String rule}) {
     emit(AddEmployeeLoadingState());
     DioHelper.postData(
         endpoint: ADD_EMP,
         token: token,
-        data: {"name": name, "department_id": departmantID}).then((value) {
-      // addEmployeeModel = AddEmployeeModel.fromJson(value);
-      emit(AddEmployeeSuccessState(addEmployeeModel!));
+        data: {
+          "name": name,
+          "department_id": departmantID,
+          "rule" : rule
+        }).then((value) {
+      emit(AddEmployeeSuccessState());
     }).catchError((onError) {
+      print(onError.toString());
       emit(AddEmployeeFailureState(onError.toString()));
     });
   }
@@ -189,8 +189,9 @@ class HumanResourcesCubit extends Cubit<HumanResourcesState> {
       "department_id": departmentID
     }).then((value) {
       // updateEmployeeModel = UpdateEmployeeModel.fromJson(value);
-      emit(UpdateEmployeeSuccessState(updateEmployeeModel!));
+      emit(UpdateEmployeeSuccessState());
     }).catchError((onError) {
+      print(onError.toString());
       emit(UpdateEmployeeFailureState(onError.toString()));
     });
   }
@@ -203,7 +204,7 @@ class HumanResourcesCubit extends Cubit<HumanResourcesState> {
         endpoint: DELETE_EMP,
         token: token,
         data: {"emp_id": employeeID}).then((value) {
-      // deleteEmployeeModel = DeleteEmployeeModel.fromJson(value);
+      deleteEmployeeModel = DeleteEmployeeModel.fromJson(value);
       emit(DeleteEmployeeSuccessState(deleteEmployeeModel!));
     }).catchError((onError) {
       emit(DeleteEmployeeFailureState(onError.toString()));
@@ -218,7 +219,7 @@ class HumanResourcesCubit extends Cubit<HumanResourcesState> {
       endpoint: ALL_EMP,
       token: token,
     ).then((value){
-      // allEmployeeModel = AllEmployeeModel.fromJson(value);
+      allEmployeeModel = AllEmployeeModel.fromJson(value);
       emit(AllEmployeeSuccessState(allEmployeeModel!));
     }).catchError((onError){
       emit(AllEmployeeFailureState(onError.toString()));

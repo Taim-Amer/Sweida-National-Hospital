@@ -24,7 +24,7 @@ class TheNewDeath {
   String? reasonOfDeath;
   String? updatedAt;
   String? createdAt;
-  int? id;
+  String? id;
 
   TheNewDeath(
       {this.name,
@@ -44,14 +44,14 @@ class TheNewDeath {
     name = json['name'];
     fatherName = json['father_name'];
     momName = json['mom_name'];
-    birthDate = json['birth_date'];
+    birthDate = json['birth_date'].toString();
     city = json['city'];
-    nationalId = json['National_id'];
-    deathDate = json['death_date'];
-    deathHour = json['death_hour'];
+    nationalId = json['National_id'].toString();
+    deathDate = json['death_date'].toString();
+    deathHour = json['death_hour'].toString();
     reasonOfDeath = json['reason_of_death'];
     updatedAt = json['updated_at'];
     createdAt = json['created_at'];
-    id = json['id'];
+    id = json['id'].toString();
   }
 }

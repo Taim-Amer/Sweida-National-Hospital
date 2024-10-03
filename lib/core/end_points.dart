@@ -2,6 +2,10 @@ const String LOGIN = "login";
 
 const String LOGOUT = "logout";
 
+const String GET_OUT = "dep/getout";
+
+const String FAST_TREAT = "dep/fast";
+
 const String ALL_DEPARTMENTS = "dep/all";
 
 const String SPECIFIC_DEPARTMENT = "dep/show";
@@ -70,19 +74,21 @@ const String RECOURCE_DELETE = "resources/delete";
 
 const String ALL_EQ = "equipment/all" ;
 
-const String DELETE_EQ = "equipment/store" ;
+const String DELETE_EQ = "equipment/delete" ;
 
 const String SHOW_EQ = "equipment/show" ;
 
-const String STORE_EQ = "equipment/update" ;
+const String STORE_EQ = "equipment/store" ;
 
-const String UPDATE_EQ = "equipment/delete" ;
+const String UPDATE_EQ = "equipment/update" ;
 
 const String ALL_DEATHS = "deaths/all";
 
 const String DEATH_BY_DATE = "deaths/date";
 
 const String STORE_DEATH = "deaths/store";
+
+const String STORE_EMERGENCY_DEATH = "deaths/emstore";
 
 const String UPDATE_DEATH = "deaths/update";
 

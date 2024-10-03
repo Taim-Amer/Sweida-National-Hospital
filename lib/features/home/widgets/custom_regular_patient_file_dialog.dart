@@ -1,8 +1,11 @@
 import "package:flutter/material.dart";
 import "package:hospital_management_system/core/styles/colors.dart";
 import "package:hospital_management_system/core/styles/sizes.dart";
+import "package:hospital_management_system/core/widgets/custom_dialog_image.dart";
 import "package:hospital_management_system/core/widgets/text_items.dart";
+import "package:hospital_management_system/features/deaths/views/widgets/custom_store_death_button.dart";
 import "package:hospital_management_system/features/home/widgets/custom_cancel_button.dart";
+import "package:hospital_management_system/features/home/widgets/custom_regulat_get_out_button.dart";
 
 Future<dynamic> showRegularPatientFileDialog(BuildContext context, int departmentID, int patientID, String fullName, String address, String birthDate, String motherName, String gender){
   return showDialog(
@@ -13,10 +16,7 @@ Future<dynamic> showRegularPatientFileDialog(BuildContext context, int departmen
         content: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(
-                  height: 300,
-                  width: 400,
-                  child: Image(image: AssetImage("assets/logos/Screenshot_20240911-175004_Chrome-removebg-preview.png"))),
+              const CustomDialogImage(image: "assets/logos/Screenshot_20240911-175004_Chrome-removebg-preview.png"),
               const SizedBox(height: Sizes.spaceBtwSections,),
               Container(
                 height: 50,
@@ -91,8 +91,12 @@ Future<dynamic> showRegularPatientFileDialog(BuildContext context, int departmen
             ],
           ),
         ),
-        actions: const [
-          CustomCancelButton()
+        actions: [
+          CustomStoreDeathButton(patientID: patientID),
+          const SizedBox(height: Sizes.spaceBtwInputField),
+          CustomRegulatGetOutButton(patientID: patientID),
+          const SizedBox(height: Sizes.spaceBtwInputField),
+          const CustomCancelButton()
         ],
       );
     },

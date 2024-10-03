@@ -12,7 +12,7 @@ analyzer:
     body_might_complete_normally_nullable: ignore
     constant_identifier_names: ignore
     must_be_immutable: ignore
-    unnecessary_null_comparison: ignore ignore ignore
+    unnecessary_null_comparison: ignore ignore ignore ignore ignore ignore ignore
 include: package:flutter_lints/flutter.yaml
 
 linter:

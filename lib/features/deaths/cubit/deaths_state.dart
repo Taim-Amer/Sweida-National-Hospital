@@ -34,6 +34,16 @@ class StoreDeathFailureState extends DeathsState {
   StoreDeathFailureState(this.error);
 }
 
+class StoreEmergencyDeathLaodingState extends DeathsState {}
+class StoreEmergencyDeathSuccessState extends DeathsState {
+  final StoreDeathModel storeDeathModel;
+  StoreEmergencyDeathSuccessState(this.storeDeathModel);
+}
+class StoreEmergencyDeathFailureState extends DeathsState {
+  final String error;
+  StoreEmergencyDeathFailureState(this.error);
+}
+
 class UpdateDeathLaodingState extends DeathsState {}
 class UpdateDeathSuccessState extends DeathsState {
   final UpdateDeathModel updateDeathModel;

@@ -14,7 +14,7 @@ class CustomEmergencyXrayQueueButton extends StatelessWidget {
     return Container(
       height: 50,
       decoration: BoxDecoration(
-        color: Colors.greenAccent,
+        color: defaultLightColor,
         boxShadow: [
           BoxShadow(
             color: defaultLightColor.withOpacity(0.1),
@@ -28,6 +28,9 @@ class CustomEmergencyXrayQueueButton extends StatelessWidget {
       child: BlocConsumer<TestsCubit, TestsState>(
         listener: (context, state){
           if(state is AllEmergencyXraySuccessState){
+            // if(state.allEmergencyXrayModel.allPatientInEmergencyXRayQueue!.isEmpty){
+            //   showToast("لا يوجد مرضى على طابور الانتظار", ToastState.ERROR);
+            // }
             showEmergencyQueueXrayDialog(context, state.allEmergencyXrayModel);
           }else if(state is AllEmergencyXrayFailureState){
             showToast("لا يوجد مرضى على طابور الانتظار", ToastState.ERROR);

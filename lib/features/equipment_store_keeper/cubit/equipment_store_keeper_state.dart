@@ -1,6 +1,10 @@
 part of 'equipment_store_keeper_cubit.dart';
 
-abstract class EquipmentStoreKeeperState {}
+class EquipmentStoreKeeperState extends Equatable{
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}
 
 class EquipmentStoreKeeperInitial extends EquipmentStoreKeeperState {}
 
@@ -8,6 +12,10 @@ class AllEquipmentsLoadingState extends EquipmentStoreKeeperState {}
 class AllEquipmentsSuccessState extends EquipmentStoreKeeperState {
   final AllEquipmentsModel allEquipmentsModel;
   AllEquipmentsSuccessState(this.allEquipmentsModel);
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [allEquipmentsModel];
 }
 class AllEquipmentsFailureState extends EquipmentStoreKeeperState {
   final String error;
@@ -35,20 +43,14 @@ class ShowEquipmentsFailureState extends EquipmentStoreKeeperState {
 }
 
 class UpdateEquipmentsLoadingState extends EquipmentStoreKeeperState {}
-class UpdateEquipmentsSuccessState extends EquipmentStoreKeeperState {
-  final UpdateEquipmentsModel updateEquipmentsModel;
-  UpdateEquipmentsSuccessState(this.updateEquipmentsModel);
-}
+class UpdateEquipmentsSuccessState extends EquipmentStoreKeeperState {}
 class UpdateEquipmentsFailureState extends EquipmentStoreKeeperState {
   final String error;
   UpdateEquipmentsFailureState(this.error);
 }
 
 class DeleteEquipmentsLoadingState extends EquipmentStoreKeeperState {}
-class DeleteEquipmentsSuccessState extends EquipmentStoreKeeperState {
-  final DeleteEquipmentsModel deleteEquipmentsModel;
-  DeleteEquipmentsSuccessState(this.deleteEquipmentsModel);
-}
+class DeleteEquipmentsSuccessState extends EquipmentStoreKeeperState {}
 class DeleteEquipmentsFailureState extends EquipmentStoreKeeperState {
   final String error;
   DeleteEquipmentsFailureState(this.error);

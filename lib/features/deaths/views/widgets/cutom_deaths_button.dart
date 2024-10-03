@@ -13,7 +13,7 @@ class CustomDeathsButton extends StatelessWidget {
     return Container(
       height: 50,
       decoration: BoxDecoration(
-        color: Colors.greenAccent,
+        color: defaultLightColor,
         boxShadow: [
           BoxShadow(
             color: defaultLightColor.withOpacity(0.1),

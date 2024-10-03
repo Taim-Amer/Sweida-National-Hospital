@@ -37,7 +37,8 @@ class CustomEmergencyTransferButton extends StatelessWidget {
           text: "تحويل",
           width: 90,
           labelColor: whiteColor,
-          color: const Color(0xfff49097),
+          // color: const Color(0xfff49097),
+          color: defaultLightColor,
         );
       },
     );

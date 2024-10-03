@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hospital_management_system/core/styles/colors.dart';
 import 'package:hospital_management_system/core/widgets/custom_button.dart';
 import 'package:hospital_management_system/core/widgets/custom_toast_widget.dart';
 import 'package:hospital_management_system/features/tests/cubit/tests_cubit.dart';
@@ -26,7 +27,8 @@ class CustomRegularTestButton extends StatelessWidget {
           },
           text: "تحاليل",
           width: 90,
-          color: const Color(0xffedd382),
+          color: defaultLightColor,
+          // color: const Color(0xffedd382),
         );
       },
     );

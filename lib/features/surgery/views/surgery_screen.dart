@@ -13,7 +13,7 @@ class SurgeryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SurgeryCubit()..allEmergencySurgery()..allRegularSurgery(),
+      create: (context) => SurgeryCubit()..allRegularSurgery()..allEmergencySurgery(),
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(

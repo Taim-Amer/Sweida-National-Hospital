@@ -25,10 +25,7 @@ class BirthByDateFailureState extends BirthsState {
 }
 
 class StoreBirthLaodingState extends BirthsState {}
-class StoreBirthSuccessState extends BirthsState {
-  final StoreBirthModel storeBirthModel;
-  StoreBirthSuccessState(this.storeBirthModel);
-}
+class StoreBirthSuccessState extends BirthsState {}
 class StoreBirthFailureState extends BirthsState {
   final String error;
   StoreBirthFailureState(this.error);
@@ -45,10 +42,7 @@ class UpdateBirthFailureState extends BirthsState {
 }
 
 class DeleteBirthLaodingState extends BirthsState {}
-class DeleteBirthSuccessState extends BirthsState {
-  final DeleteBirthModel deleteBirthModel;
-  DeleteBirthSuccessState(this.deleteBirthModel);
-}
+class DeleteBirthSuccessState extends BirthsState {}
 class DeleteBirthFailureState extends BirthsState {
   final String error;
   DeleteBirthFailureState(this.error);

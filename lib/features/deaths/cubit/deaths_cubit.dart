@@ -49,12 +49,13 @@ class DeathsCubit extends Cubit<DeathsState> {
 
   StoreDeathModel? storeDeathModel;
   void storeDeath({
-    required String name,
-    required String fatherName,
-    required String motherName,
-    required String birthDate,
-    required String city,
-    required int nationalId,
+    required int id,
+    // required String name,
+    // required String fatherName,
+    // required String motherName,
+    // required String birthDate,
+    // required String city,
+    // required int nationalId,
     required String deathDate,
     required String hourDate,
     required String reasonOfDeath,
@@ -64,26 +65,62 @@ class DeathsCubit extends Cubit<DeathsState> {
       endpoint: STORE_DEATH,
       token: token,
       data: {
-        "name" : name,
-        "father_name" : fatherName,
-        "mom_name" : motherName,
-        "birth_date" : fatherName,
-        "city" : city,
-        "National_id" : nationalId,
+        "patient_id" : id,
         "death_date" : deathDate,
         "death_hour" : hourDate,
         "reason_of_death" : reasonOfDeath
       }
     ).then((value){
       storeDeathModel = StoreDeathModel.fromJson(value);
+      print(storeDeathModel!.message);
+      print(storeDeathModel!.message);
+      print(storeDeathModel!.message);
       emit(StoreDeathSuccessState(storeDeathModel!));
     }).catchError((onError){
+      print(onError.toString());
       emit(StoreDeathFailureState(onError.toString()));
     });
   }
 
+  void storeEmergencyDeath({
+    required int id,
+    // required String name,
+    // required String fatherName,
+    // required String motherName,
+    // required String birthDate,
+    // required String city,
+    // required int nationalId,
+    required String deathDate,
+    required String hourDate,
+    required String reasonOfDeath,
+  }){
+    emit(StoreEmergencyDeathLaodingState());
+    DioHelper.postData(
+        endpoint: STORE_DEATH,
+        token: token,
+        data: {
+          "patient_id" : id,
+          "death_date" : deathDate,
+          "death_hour" : hourDate,
+          "reason_of_death" : reasonOfDeath
+        }
+    ).then((value){
+      storeDeathModel = StoreDeathModel.fromJson(value);
+      print(storeDeathModel!.message);
+      print(storeDeathModel!.message);
+      print(storeDeathModel!.message);
+      emit(StoreEmergencyDeathSuccessState(storeDeathModel!));
+    }).catchError((onError){
+      print(onError.toString());
+      emit(StoreEmergencyDeathFailureState(onError.toString()));
+    });
+  }
+
   UpdateDeathModel? updateDeathModel;
-  void updateDeath({required String name , required int id}){
+  void updateDeath({
+    required String name ,
+    required int id,
+  }){
     emit(UpdateDeathLaodingState());
     DioHelper.postData(
       endpoint: UPDATE_DEATH,
@@ -93,7 +130,7 @@ class DeathsCubit extends Cubit<DeathsState> {
         "name" : name
       }
     ).then((value){
-      // updateDeathModel = UpdateDeathModel.fromJson(value);
+      updateDeathModel = UpdateDeathModel.fromJson(value);
       emit(UpdateDeathSuccessState(updateDeathModel!));
     }).catchError((onError){
       emit(UpdateDeathFailureState(onError.toString()));
@@ -103,14 +140,14 @@ class DeathsCubit extends Cubit<DeathsState> {
   DeleteDeathModel? deleteDeathModel;
   void deleteDeath({required int id}){
     emit(DeleteDeathLaodingState());
-    DioHelper.deleteData(
+    DioHelper.postData(
       endpoint: DELETE_DEATH,
       token: token,
-      queryParameters: {
+      data: {
         "id" : id
       }
     ).then((value){
-      // deleteDeathModel = DeleteDeathModel.fromJson(value);
+      deleteDeathModel = DeleteDeathModel.fromJson(value);
       emit(DeleteDeathSuccessState(deleteDeathModel!));
     }).catchError((onError){
       emit(DeleteDeathFailureState(onError.toString()));

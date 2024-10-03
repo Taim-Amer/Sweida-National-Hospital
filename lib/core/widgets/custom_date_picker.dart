@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hospital_management_system/core/styles/colors.dart';
-import 'package:hospital_management_system/core/styles/themes.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:intl/intl.dart';
 
 class CustomDatePicker extends StatelessWidget {
@@ -9,7 +9,7 @@ class CustomDatePicker extends StatelessWidget {
     required this.dateController,
     this.width = double.infinity,
     this.height = 50,
-    this.hint = "Enter your birthdate",
+    this.hint = "تاريخ الميلاد",
     this.outlineColor = Colors.black,
     this.outlineWidth = 2.0,
     this.textColor = whiteColor,
@@ -27,39 +27,44 @@ class CustomDatePicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      decoration: BoxDecoration(
+        color: secondDarkColor.withOpacity(.4),
+        borderRadius: BorderRadius.circular(10),
+      ),
       height: height,
       width: width,
       child: TextField(
         enableInteractiveSelection: false,
         controller: dateController,
         keyboardType: TextInputType.none,
-        style: TextStyle(
-          color: textColor,
+        style: const TextStyle(
+            color: titleColor, fontStyle: FontStyle.normal
         ),
         cursorColor: secondLightColor,
-        textAlign: TextAlign.center,
+        textAlign: TextAlign.right,
         decoration: InputDecoration(
           hintText: hint,
-          hintStyle: TextStyle(
-            color: hintColor,
-          ),
+          suffixIcon: const Icon(Iconsax.calendar, color: defaultLightColor),
+          // hintStyle: TextStyle(
+          //   color: hintColor,
+          // ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
-            borderSide: BorderSide(
-              color: outlineColor,
+            borderSide: const BorderSide(
+              color: Colors.transparent,
               width: 5,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: secondLightColor,
+              color: Colors.transparent,
               width: outlineWidth,
             ),
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: defaultLightColor.withOpacity(.5),
+              color: Colors.transparent,
               width: outlineWidth,
             ),
           ),

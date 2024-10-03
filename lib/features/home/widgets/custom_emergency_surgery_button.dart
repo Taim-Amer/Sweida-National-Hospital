@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hospital_management_system/core/styles/colors.dart';
 import 'package:hospital_management_system/core/widgets/custom_button.dart';
 import 'package:hospital_management_system/core/widgets/custom_toast_widget.dart';
 import 'package:hospital_management_system/features/surgery/cubit/surgery_cubit.dart';
@@ -27,7 +28,9 @@ class CustomEmergencySurgeryButton extends StatelessWidget {
           function: (){
             SurgeryCubit.get(context).addEmergencySurgery(patientID: id);
           },
-          text: "عملية", width: 90,
+          text: "عملية",
+          width: 90,
+          color: defaultLightColor,
         );
       },
     );

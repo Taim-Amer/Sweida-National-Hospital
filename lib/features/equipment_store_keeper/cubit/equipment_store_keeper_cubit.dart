@@ -1,12 +1,11 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hospital_management_system/core/end_points.dart';
 import 'package:hospital_management_system/core/network/local/cache_helper.dart';
 import 'package:hospital_management_system/core/network/remote/dio_helper.dart';
 import 'package:hospital_management_system/features/equipment_store_keeper/model/all_equipments_model.dart';
-import 'package:hospital_management_system/features/equipment_store_keeper/model/delete_equipments_model.dart';
 import 'package:hospital_management_system/features/equipment_store_keeper/model/show_equipments_model.dart';
 import 'package:hospital_management_system/features/equipment_store_keeper/model/store_equipments_model.dart';
-import 'package:hospital_management_system/features/equipment_store_keeper/model/update_equipments_model.dart';
 
 part 'equipment_store_keeper_state.dart';
 
@@ -31,7 +30,7 @@ class EquipmentStoreKeeperCubit extends Cubit<EquipmentStoreKeeperState> {
   void storeEquipments({
     required String name,
     required String description,
-    required int quantity,
+    required String quantity,
   }){
     emit(StoreEquipmentsLoadingState());
     DioHelper.postData(
@@ -46,6 +45,7 @@ class EquipmentStoreKeeperCubit extends Cubit<EquipmentStoreKeeperState> {
       storeEquipmentsModel = StoreEquipmentsModel.fromJson(value);
       emit(StoreEquipmentsSuccessState(storeEquipmentsModel!));
     }).catchError((onError){
+      print(onError.toString());
       emit(StoreEquipmentsFailureState(onError.toString()));
     });
   }
@@ -67,42 +67,41 @@ class EquipmentStoreKeeperCubit extends Cubit<EquipmentStoreKeeperState> {
     });
   }
 
-  UpdateEquipmentsModel? updateEquipmentsModel;
   void updateEquipments({
-    required String name,
-    required String description,
-    required int quantity,
+    required int id,
+    String? name,
+    String? description,
+    String? quantity,
   }){
     emit(UpdateEquipmentsLoadingState());
-    DioHelper.putData(
+    DioHelper.postData(
       endpoint: UPDATE_EQ,
       token: token,
       data: {
+        "id" : id,
         "name": name,
         "description": description,
         "quantity": quantity
       }
     ).then((value){
-      updateEquipmentsModel = UpdateEquipmentsModel.fromJson(value);
-      emit(UpdateEquipmentsSuccessState(updateEquipmentsModel!));
+      emit(UpdateEquipmentsSuccessState());
     }).catchError((onError){
       emit(UpdateEquipmentsFailureState(onError.toString()));
     });
   }
 
-  DeleteEquipmentsModel? deleteEquipmentsModel;
   void deleteEquipments({required int id}){
     emit(DeleteEquipmentsLoadingState());
-    DioHelper.deleteData(
+    DioHelper.postData(
       endpoint: DELETE_EQ,
       token: token,
-      queryParameters: {
+      data: {
         "id" : id,
       }
     ).then((value){
-      deleteEquipmentsModel = DeleteEquipmentsModel.fromJson(value);
-      emit(DeleteEquipmentsSuccessState(deleteEquipmentsModel!));
+      allEquipments();
     }).catchError((onError){
+      print(onError.toString());
       emit(DeleteEquipmentsFailureState(onError.toString()));
     });
   }

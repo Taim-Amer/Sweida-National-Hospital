@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hospital_management_system/core/styles/colors.dart';
 import 'package:hospital_management_system/core/styles/sizes.dart';
 import 'package:hospital_management_system/core/widgets/custom_button.dart';
+import 'package:hospital_management_system/core/widgets/custom_dialog_image.dart';
 import 'package:hospital_management_system/core/widgets/custom_text_field.dart';
 import 'package:hospital_management_system/core/widgets/custom_toast_widget.dart';
 import 'package:hospital_management_system/core/widgets/navigate_items.dart';
@@ -23,7 +24,7 @@ Future<dynamic> showRegularTransferDialog(BuildContext context, TextEditingContr
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Image(image: NetworkImage("assets/logos/Screenshot_20240912-222951_Chrome-removebg-preview.png")),
+                const CustomDialogImage(image: "assets/logos/Screenshot_20240912-222951_Chrome-removebg-preview.png"),
                 const SizedBox(height: Sizes.spaceBtwSections,),
                 CustomTextField(
                   controller: targetDepartmentController,

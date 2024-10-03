@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hospital_management_system/core/styles/colors.dart';
 import 'package:hospital_management_system/core/styles/sizes.dart';
 import 'package:hospital_management_system/core/widgets/custom_button.dart';
+import 'package:hospital_management_system/core/widgets/custom_dialog_image.dart';
 import 'package:hospital_management_system/core/widgets/custom_text_field.dart';
 import 'package:hospital_management_system/features/home/widgets/custom_cancel_button.dart';
 import 'package:hospital_management_system/features/surgery/cubit/surgery_cubit.dart';
@@ -13,13 +15,14 @@ Future<dynamic> showSurgeryAddDialog(BuildContext context, TextEditingController
     context: context,
     builder: (context){
       return AlertDialog(
+        backgroundColor: backgroundColor,
         content: SizedBox(
           width: 300,
           height: 400,
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const Image(image: NetworkImage("assets/logos/Screenshot_20240914-091717_Chrome-removebg-preview.png")),
+                const CustomDialogImage(image: "assets/logos/Screenshot_20240914-091717_Chrome-removebg-preview.png"),
                 CustomTextField(
                   controller: patientIdController,
                   type: TextInputType.number,

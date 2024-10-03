@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hospital_management_system/core/styles/colors.dart';
 import 'package:hospital_management_system/core/styles/sizes.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -15,7 +16,7 @@ class CustomShimmerList extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.only(bottom: Sizes.spaceBtwItems),
           child: Shimmer.fromColors(
-            baseColor: Colors.grey[400]!,
+            baseColor: defaultLightColor.withOpacity(.4),
             highlightColor: Colors.grey[200]!,
             child: Container(
               height: 100,

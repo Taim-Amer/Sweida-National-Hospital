@@ -104,6 +104,24 @@ class EmergencyTransferringFailureState extends DepartmentsState {
   EmergencyTransferringFailureState(this.error);
 }
 
+class GetOutRegularLoadingState extends DepartmentsState {}
+class GetOutRegularSuccessState extends DepartmentsState {
+
+}
+class GetOutRegularFailureState extends DepartmentsState {
+  final String error;
+  GetOutRegularFailureState(this.error);
+}
+class GetOutEmergencyLoadingState extends DepartmentsState {}
+class GetOutEmergencySuccessState extends DepartmentsState {
+
+}
+class GetOutEmergencyFailureState extends DepartmentsState {
+  final String error;
+  GetOutEmergencyFailureState(this.error);
+}
+
+
 // //All Emergency Patient
 // class AllEmergencyPatientLoadingState extends DepartmentsState {}
 // class AllEmergencyPatientSuccessState extends DepartmentsState {

@@ -13,7 +13,7 @@ class CustomEmergencyFileButton extends StatelessWidget {
     required this.birthDate,
     required this.motherName,
     required this.gender,
-    required this.chain,
+    required this.chain, required this.patientID,
   });
 
   final String fullName;
@@ -22,6 +22,7 @@ class CustomEmergencyFileButton extends StatelessWidget {
   final String motherName;
   final String gender;
   final int chain;
+  final int patientID;
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +30,13 @@ class CustomEmergencyFileButton extends StatelessWidget {
       builder: (context, state) {
         return CustomButton(
           function: () {
-            return showEmergencyPatientFileDialog(context, fullName, address, birthDate, motherName, gender, chain);
+            return showEmergencyPatientFileDialog(context, fullName, address, birthDate, motherName, gender, chain, patientID);
           },
           text: "الملف",
           width: 90,
           labelColor: whiteColor,
-          color: const Color(0xffdfb2f4),
+          // color: const Color(0xffdfb2f4),
+          color: defaultLightColor,
         );
       },
     );

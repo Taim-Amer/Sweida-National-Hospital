@@ -54,7 +54,7 @@ class CustomEmergencyPatientCard extends StatelessWidget {
             const SizedBox(width: Sizes.spaceBtwItems),
             CustomEmergencyTestButton(id: id),
             const SizedBox(width: Sizes.spaceBtwItems,),
-            CustomEmergencyFileButton(fullName: fullName, address: address, birthDate: birthDate, motherName: motherName, gender: gender, chain: chain),
+            CustomEmergencyFileButton(fullName: fullName, address: address, birthDate: birthDate, motherName: motherName, gender: gender, chain: chain, patientID: id,),
             const SizedBox(width: Sizes.spaceBtwItems),
             departmentID == 16 || departmentID == 2 ? Row(
               children: [
@@ -64,7 +64,7 @@ class CustomEmergencyPatientCard extends StatelessWidget {
             ) : const SizedBox(),
             CustomEmergencyTransferButton(targetDepartmentController: targetDepartmentController, id: id),
             const Spacer(),
-            titleText("$fullName.$id", color: defaultDarkColor, size: 18),
+            titleText(fullName, color: defaultDarkColor, size: 18),
             const SizedBox(width: Sizes.spaceBtwItems),
             const Icon(Iconsax.warning_2, size: 40, color: Colors.redAccent),
           ],

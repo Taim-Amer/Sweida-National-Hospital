@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hospital_management_system/core/styles/colors.dart';
 import 'package:hospital_management_system/core/styles/sizes.dart';
+import 'package:hospital_management_system/core/widgets/custom_dialog_image.dart';
 import 'package:hospital_management_system/core/widgets/text_items.dart';
 import 'package:hospital_management_system/features/home/widgets/custom_cancel_button.dart';
 import 'package:hospital_management_system/features/tests/models/all_regular_tests_model.dart';
@@ -12,7 +13,8 @@ Future<dynamic> showRegularQueueTestDialog(BuildContext context, AllRegularTests
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: const Image(image: NetworkImage("assets/logos/Screenshot_20240912-114229_Chrome-removebg-preview.png"),),
+        title: const CustomDialogImage(image: "assets/logos/Screenshot_20240911-174957_Chrome-removebg-preview (2).png"),
+
         content: SizedBox(
           width: 200,
           height: 500,

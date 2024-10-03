@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hospital_management_system/core/styles/colors.dart';
 import 'package:hospital_management_system/core/widgets/custom_button.dart';
 import 'package:hospital_management_system/features/home/widgets/custom_regular_transfer_dialog.dart';
 import 'package:hospital_management_system/features/patients/cubit/patients_cubit.dart';
@@ -24,7 +25,8 @@ class CustomRegularTransferButton extends StatelessWidget {
           },
           text: "تحويل",
           width: 90,
-          color: const Color(0xfff49097),
+          color: defaultLightColor,
+          // color: const Color(0xfff49097),
         );
       },
     );

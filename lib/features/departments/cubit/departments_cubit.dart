@@ -24,7 +24,6 @@ class DepartmentsCubit extends Cubit<DepartmentsState> {
     emit(AllDepartmentsLoadingState());
     DioHelper.getData(
       endpoint: ALL_DEPARTMENTS,
-      token: token
     ).then((value) {
       allDepartmentModel = AllDepartmentModel.fromJson(value);
       emit(AllDepartmentsSuccessState(allDepartmentModel!));
@@ -62,9 +61,9 @@ class DepartmentsCubit extends Cubit<DepartmentsState> {
       },
     ).then((value) {
       acceptResidentModel = AcceptResidentModel.fromJson(value);
-
       emit(AcceptResidentSuccessState(acceptResidentModel!));
     }).catchError((onError) {
+      print(onError.toString());
       emit(AcceptResidentFailureState(onError.toString()));
     });
   }
@@ -129,16 +128,48 @@ class DepartmentsCubit extends Cubit<DepartmentsState> {
       endpoint: ALL_EMERGENCY_PATIENT,
       token: token,
     ).then((value) {
-      AllEmergencyPatientModel emergencyModel = AllEmergencyPatientModel.fromJson(value);
+      allEmergencyPatientModel = AllEmergencyPatientModel.fromJson(value);
       emit(state.copyWith(
-        allEmergencyPatientModel: emergencyModel,
+        allEmergencyPatientModel: allEmergencyPatientModel,
         isLoadingEmergencyPatient: false,
       ));
     }).catchError((onError) {
+      print(onError.toString());
       emit(state.copyWith(
         error: onError.toString(),
         isLoadingEmergencyPatient: false,
       ));
     });
   }
+
+  void getOutRegular({required id}){
+    emit(GetOutRegularLoadingState());
+    DioHelper.postData(
+      endpoint: GET_OUT,
+      token: token,
+      data: {
+          "patient_id" : id
+      },
+    ).then((valeu){
+      emit(GetOutRegularSuccessState());
+    }).catchError((onError){
+      emit(GetOutRegularFailureState(onError.toString()));
+    });
+  }
+
+  void getOutEmergency({required id}){
+    emit(GetOutEmergencyLoadingState());
+    DioHelper.postData(
+      endpoint: FAST_TREAT,
+      token: token,
+      data: {
+        "patient_id" : id
+      },
+    ).then((valeu){
+      emit(GetOutEmergencySuccessState());
+    }).catchError((onError){
+      emit(GetOutEmergencyFailureState(onError.toString()));
+    });
+  }
+
 }

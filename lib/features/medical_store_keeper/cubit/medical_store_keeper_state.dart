@@ -1,6 +1,10 @@
 part of 'medical_store_keeper_cubit.dart';
 
-abstract class MedicalStoreKeeperState {}
+class MedicalStoreKeeperState extends Equatable{
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}
 
 class MedicalStoreKeeperInitial extends MedicalStoreKeeperState {}
 
@@ -8,6 +12,10 @@ class AllResourcesLoadingState extends MedicalStoreKeeperState {}
 class AllResourcesSuccessState extends MedicalStoreKeeperState {
   final AllResoursesModel allResoursesModel;
   AllResourcesSuccessState(this.allResoursesModel);
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [allResoursesModel];
 }
 class AllResourcesFailureState extends MedicalStoreKeeperState {
   final String error;
@@ -15,10 +23,7 @@ class AllResourcesFailureState extends MedicalStoreKeeperState {
 }
 
 class StoreResourcesLoadingState extends MedicalStoreKeeperState {}
-class StoreResourcesSuccessState extends MedicalStoreKeeperState {
-  final StoreResoursesModel storeRecourceModel;
-  StoreResourcesSuccessState(this.storeRecourceModel);
-}
+class StoreResourcesSuccessState extends MedicalStoreKeeperState {}
 class StoreResourcesFailureState extends MedicalStoreKeeperState {
   final String error;
   StoreResourcesFailureState(this.error);
@@ -36,8 +41,8 @@ class ShowResourcesFailureState extends MedicalStoreKeeperState {
 
 class UpdateResourcesLoadingState extends MedicalStoreKeeperState {}
 class UpdateResourcesSuccessState extends MedicalStoreKeeperState {
-  final UpdateResoursesModel updateResoursesModel;
-  UpdateResourcesSuccessState(this.updateResoursesModel);
+  // final UpdateResoursesModel updateResoursesModel;
+  // UpdateResourcesSuccessState(this.updateResoursesModel);
 }
 class UpdateResourcesFailureState extends MedicalStoreKeeperState {
   final String error;

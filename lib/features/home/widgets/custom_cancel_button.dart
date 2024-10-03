@@ -13,7 +13,7 @@ class CustomCancelButton extends StatelessWidget {
         Navigator.of(context).pop();
       },
       text: "رجوع",
-      color: Colors.deepOrangeAccent,
+      color: const Color(0xfff67e7d),
     );
   }
 }

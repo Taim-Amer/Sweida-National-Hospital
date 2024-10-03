@@ -15,7 +15,7 @@ class CustomDepartmentNameContainer extends StatelessWidget {
       builder: (context, state){
         return Container(
           decoration: BoxDecoration(
-            color: Colors.greenAccent,
+            color: defaultLightColor,
             boxShadow: [
               BoxShadow(
                 color: defaultLightColor.withOpacity(0.1),

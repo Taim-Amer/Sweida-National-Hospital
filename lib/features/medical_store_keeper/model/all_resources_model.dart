@@ -7,19 +7,19 @@ class AllResoursesModel {
     if (json['All Resource'] != null) {
       allResource = <AllResource>[];
       json['All Resource'].forEach((v) {
-        allResource!.add(new AllResource.fromJson(v));
+        allResource!.add(AllResource.fromJson(v));
       });
     }
   }
 }
 
 class AllResource {
-  int? id;
+  String? id;
   String? name;
   String? endDate;
   String? company;
   String? quantity;
-  int? availabilityStatus;
+  String? availabilityStatus;
   Null createdAt;
   Null updatedAt;
 
@@ -34,12 +34,12 @@ class AllResource {
         this.updatedAt});
 
   AllResource.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = json['id'].toString();
     name = json['name'];
     endDate = json['end_date'];
     company = json['company'];
-    quantity = json['quantity'];
-    availabilityStatus = json['availability_status'];
+    quantity = json['quantity'].toString();
+    availabilityStatus = json['availability_status'].toString();
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }

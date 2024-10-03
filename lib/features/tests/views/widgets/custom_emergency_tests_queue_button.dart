@@ -14,7 +14,7 @@ class CustomEmergencyTestsQueueButton extends StatelessWidget {
     return Container(
       height: 50,
       decoration: BoxDecoration(
-        color: Colors.greenAccent,
+        color: defaultLightColor,
         boxShadow: [
           BoxShadow(
             color: defaultLightColor.withOpacity(0.1),
@@ -28,6 +28,9 @@ class CustomEmergencyTestsQueueButton extends StatelessWidget {
       child: BlocConsumer<TestsCubit, TestsState>(
         listener: (context, state){
           if(state is AllEmergencyTestSuccessState){
+            if(state.allEmergencyTestsModel.allPatientInEmergencyTestQueue!.isEmpty){
+              showToast("لا يوجد مرضى على طابور الانتظار", ToastState.ERROR);
+            }
             showEmergencyQueueTestDialog(context, state.allEmergencyTestsModel);
           }else if(state is AllEmergencyTestFailureState){
             showToast("لا يوجد مرضى على طابور الانتظار", ToastState.ERROR);

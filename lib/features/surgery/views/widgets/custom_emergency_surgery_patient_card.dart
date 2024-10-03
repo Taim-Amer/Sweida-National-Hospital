@@ -44,7 +44,7 @@ class CustomEmergencySurgeryPatientCard extends StatelessWidget {
             const SizedBox(width: Sizes.spaceBtwItems),
             CustomEmergencyTestButton(id: id),
             const SizedBox(width: Sizes.spaceBtwItems,),
-            CustomEmergencyFileButton(fullName: fullName, address: address, birthDate: birthDate, motherName: motherName, gender: gender, chain: chain),
+            CustomEmergencyFileButton(fullName: fullName, address: address, birthDate: birthDate, motherName: motherName, gender: gender, chain: chain, patientID: id),
             const SizedBox(width: Sizes.spaceBtwItems),
             CustomEmergencyTransferButton(targetDepartmentController: targetDepartmentController, id: id),
             const Spacer(),

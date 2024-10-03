@@ -1,0 +1,41 @@
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:hospital_management_system/core/styles/sizes.dart';
+// import 'package:hospital_management_system/core/widgets/custom_button.dart';
+// import 'package:hospital_management_system/core/widgets/custom_date_picker.dart';
+// import 'package:hospital_management_system/core/widgets/custom_toast_widget.dart';
+// import 'package:hospital_management_system/features/human_resources/cubit/human_resources_cubit.dart';
+//
+// class CustomAbsentPenaltyFilterRow extends StatelessWidget {
+//   CustomAbsentPenaltyFilterRow({super.key});
+//
+//   var dateController = TextEditingController();
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       children: [
+//         CustomDatePicker(dateController: dateController, width: 300, hint: "بداية العقوبات",),
+//         const SizedBox(width: Sizes.sm),
+//         BlocConsumer<HumanResourcesCubit, HumanResourcesState>(
+//           listener: (context, state) {
+//             if(state is AllPenaltyInDateSuccessState){
+//               //dialog
+//             }else if(state is AllPenaltyInDateFailureState){
+//               showToast("لا يوجد اي عقوبات", ToastState.ERROR);
+//             }
+//           },
+//           builder: (context, state) {
+//             return CustomButton(
+//                 function: () {
+//                   HumanResourcesCubit.get(context).allPenaltyInDate(date: dateController.text);
+//                 },
+//                 text: "بحث",
+//                 width: 100,
+//             );
+//           },
+//         )
+//       ],
+//     );
+//   }
+// }

@@ -37,8 +37,8 @@ class CustomRegularPatientCard extends StatelessWidget {
             const SizedBox(width: Sizes.spaceBtwItems),
             CustomRegularTestButton(id: id),
             const SizedBox(width: Sizes.spaceBtwItems),
-            CustomRegularFileButton(id: id),
-            const SizedBox(width: Sizes.spaceBtwItems),
+            departmentID != 2 ? CustomRegularFileButton(id: id) : const SizedBox(),
+            departmentID != 2 ? const SizedBox(width: Sizes.spaceBtwItems) : const SizedBox(),
             departmentID == 16 || departmentID == 2 ? Row(
               children: [
                 CustomRegularSurgeryButton(id: id),
@@ -47,7 +47,7 @@ class CustomRegularPatientCard extends StatelessWidget {
             ) : const SizedBox(),
             CustomRegularTransferButton(targetDepartment: targetDepartment, id: id),
             const Spacer(),
-            titleText("$id.$fullName", color: defaultDarkColor, size: 18),
+            titleText(fullName, color: defaultDarkColor, size: 18),
             const SizedBox(width: Sizes.spaceBtwItems),
             const Icon(Iconsax.verify, size: 40, color: Colors.green),
           ],

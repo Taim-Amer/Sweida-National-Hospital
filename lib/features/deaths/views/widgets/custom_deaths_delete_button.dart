@@ -4,6 +4,7 @@ import 'package:hospital_management_system/core/widgets/custom_button.dart';
 import 'package:hospital_management_system/core/widgets/custom_toast_widget.dart';
 import 'package:hospital_management_system/core/widgets/navigate_items.dart';
 import 'package:hospital_management_system/features/deaths/cubit/deaths_cubit.dart';
+import 'package:hospital_management_system/features/drawer/views/drawer_layout.dart';
 import 'package:hospital_management_system/features/home/home_screen.dart';
 
 class CustomDeathsDeleteButton extends StatelessWidget {
@@ -17,7 +18,7 @@ class CustomDeathsDeleteButton extends StatelessWidget {
       listener: (context, state){
         if(state is DeleteDeathSuccessState){
           showToast("تم حذف حالة الوفاة من سجل الوفيات", ToastState.SUCCESS);
-          navigateTo(context, const HomeScreen());
+          navigateTo(context, const DrawerLayout());
         }else if(state is DeleteDeathFailureState){
           showToast("حدث خطأ ما يرجى اعادة المحاولة", ToastState.ERROR);
         }

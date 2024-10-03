@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hospital_management_system/core/end_points.dart';
 import 'package:hospital_management_system/core/network/local/cache_helper.dart';
@@ -5,9 +6,6 @@ import 'package:hospital_management_system/core/network/remote/dio_helper.dart';
 import 'package:hospital_management_system/features/medical_store_keeper/model/all_resources_model.dart';
 import 'package:hospital_management_system/features/medical_store_keeper/model/delete_resourses_model.dart';
 import 'package:hospital_management_system/features/medical_store_keeper/model/show_resources_model.dart';
-import 'package:hospital_management_system/features/medical_store_keeper/model/store_resources_model.dart';
-import 'package:hospital_management_system/features/medical_store_keeper/model/update_resourses_model.dart';
-
 part 'medical_store_keeper_state.dart';
 
 class MedicalStoreKeeperCubit extends Cubit<MedicalStoreKeeperState> {
@@ -30,13 +28,12 @@ class MedicalStoreKeeperCubit extends Cubit<MedicalStoreKeeperState> {
     });
   }
 
-  StoreResoursesModel? storeResoursesModel;
   void storeResources({
     required String name,
     required String endDate,
     required String company,
-    required int quantity,
-    required int availabilityStatus
+    required String quantity,
+    int? availabilityStatus = 1
   }){
     emit(StoreResourcesLoadingState());
     DioHelper.postData(
@@ -50,8 +47,7 @@ class MedicalStoreKeeperCubit extends Cubit<MedicalStoreKeeperState> {
         "availability_status" : availabilityStatus
       }
     ).then((value){
-      storeResoursesModel = StoreResoursesModel.fromJson(value);
-      emit(StoreResourcesSuccessState(storeResoursesModel!));
+      emit(StoreResourcesSuccessState());
     }).catchError((onError){
       emit(StoreResourcesFailureState(onError.toString()));
     });
@@ -74,11 +70,10 @@ class MedicalStoreKeeperCubit extends Cubit<MedicalStoreKeeperState> {
     });
   }
 
-  UpdateResoursesModel? updateResoursesModel;
   void updateResources({
-    required String name,
-    required String quantity,
-    required String availabilityStatus,
+    String? name,
+    String? quantity,
+    required int id
   }){
     emit(UpdateResourcesLoadingState());
     DioHelper.postData(
@@ -87,11 +82,10 @@ class MedicalStoreKeeperCubit extends Cubit<MedicalStoreKeeperState> {
       data: {
         "name" : name,
         "quantity" : quantity,
-        "availability_status" : availabilityStatus
+        "id" : id
       }
     ).then((value){
-      updateResoursesModel = UpdateResoursesModel.fromJson(value);
-      emit(UpdateResourcesSuccessState(updateResoursesModel!));
+      emit(UpdateResourcesSuccessState());
     }).catchError((onError){
       emit(UpdateResourcesFailureState(onError.toString()));
     });
@@ -100,15 +94,14 @@ class MedicalStoreKeeperCubit extends Cubit<MedicalStoreKeeperState> {
   DeleteResoursesModel? deleteResoursesModel;
   void deleteResources({required int id}){
     emit(DeleteResourcesLoadingState());
-    DioHelper.deleteData(
+    DioHelper.postData(
         endpoint: RECOURCE_DELETE,
       token: token,
-      queryParameters: {
+      data: {
           "id" : id
       }
     ).then((value){
-      deleteResoursesModel = DeleteResoursesModel.fromJson(value);
-      emit(DeleteResourcesSuccessState(deleteResoursesModel!));
+      allResources();
     }).catchError((onError){
       emit(DeleteResourcesFailureState(onError.toString()));
     });

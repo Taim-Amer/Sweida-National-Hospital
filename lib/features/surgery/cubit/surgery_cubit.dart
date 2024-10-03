@@ -45,6 +45,8 @@ class SurgeryCubit extends Cubit<SurgeryState> {
       addEmergencySurgeryModel = AddEmergencySurgeryModel.fromJson(value);
       emit(AddEmergencySurgerySuccessState(addEmergencySurgeryModel!));
     }).catchError((onError){
+      print(onError.toString());
+      print(onError.toString());
       emit(AddEmergencySurgeryFailureState(onError.toString()));
     });
   }

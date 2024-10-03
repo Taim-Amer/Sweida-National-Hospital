@@ -15,20 +15,14 @@ class EstablishAttendanceFailureState extends HumanResourcesState{
 }
 
 class AbsentLeftingLeaveLoadingState extends HumanResourcesState{}
-class AbsentLeftingLeaveSuccessState extends HumanResourcesState{
-  final AbsentLeftingLeaveModel absentLeftingLeaveModel;
-  AbsentLeftingLeaveSuccessState(this.absentLeftingLeaveModel);
-}
+class AbsentLeftingLeaveSuccessState extends HumanResourcesState{}
 class AbsentLeftingLeaveFailureState extends HumanResourcesState{
   final String error;
   AbsentLeftingLeaveFailureState(this.error);
 }
 
 class AbsentPenaltyLoadingState extends HumanResourcesState{}
-class AbsentPenaltySuccessState extends HumanResourcesState{
-  final AbsentPenaltyModel absentPenaltyModel;
-  AbsentPenaltySuccessState(this.absentPenaltyModel);
-}
+class AbsentPenaltySuccessState extends HumanResourcesState{}
 class AbsentPenaltyFailureState extends HumanResourcesState{
   final String error;
   AbsentPenaltyFailureState(this.error);
@@ -85,10 +79,7 @@ class AllPenaltyInDateFailureState extends HumanResourcesState{
 }
 
 class AddEmployeeLoadingState extends HumanResourcesState{}
-class AddEmployeeSuccessState extends HumanResourcesState{
-  final AddEmployeeModel addEmployeeModel;
-  AddEmployeeSuccessState(this.addEmployeeModel);
-}
+class AddEmployeeSuccessState extends HumanResourcesState{}
 class AddEmployeeFailureState extends HumanResourcesState{
   final String error;
   AddEmployeeFailureState(this.error);
@@ -105,10 +96,7 @@ class ShowEmployeeFailureState extends HumanResourcesState{
 }
 
 class UpdateEmployeeLoadingState extends HumanResourcesState{}
-class UpdateEmployeeSuccessState extends HumanResourcesState{
-  final UpdateEmployeeModel updateEmployeeModel;
-  UpdateEmployeeSuccessState(this.updateEmployeeModel);
-}
+class UpdateEmployeeSuccessState extends HumanResourcesState{}
 class UpdateEmployeeFailureState extends HumanResourcesState{
   final String error;
   UpdateEmployeeFailureState(this.error);
